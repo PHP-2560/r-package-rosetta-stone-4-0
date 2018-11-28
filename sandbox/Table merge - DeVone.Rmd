@@ -1,0 +1,72 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r}
+
+#This will need to be defined by the user for now dummy set below used
+yearStart<-2014
+yearEnd<-2018
+
+n=361 #Set number of search results wanted
+term <- "Biostatistics[MeSH Term]"
+year<-2014
+search <-paste(term, "AND (", year, "[PDAT])")
+
+vivax_search <- entrez_search(db = "pubmed",
+                              term = search, retmax=n) #Altered to view biostats
+
+multi_summs <- entrez_summary(db="pubmed", id=vivax_search$ids)#, retmax=n)
+
+
+date_and_cite <- extract_from_esummary(multi_summs,"uid") ##CAN GET CITATIONS
+
+keywords<-c()
+keywordCounter=1
+
+for(i in 1:n){
+
+##CANNONT DIRECTLY GET KEY WORDS
+
+url<-paste("https://www.ncbi.nlm.nih.gov/pubmed/",date_and_cite[i], sep="" )
+
+#This body of code grabs the keylist
+results <- read_html(url)
+papers <- html_nodes(results, ".rprt")
+keys_html <- html_nodes(papers, ".keywords")
+keys <- html_text(keys_html)
+
+
+
+if(length(keys)==0){#If no keywords do nothing
+}else{#Split of string make a list of characters
+keylist.0 <- unlist(strsplit(keys, ": ",fixed=TRUE))
+keylist<- unlist(strsplit(keylist.0[2], "; "))
+
+for(a in 1:length(keylist)){
+  keywords[keywordCounter] <- keylist[a]
+  keywordCounter <- keywordCounter+1
+}
+}
+}
+
+
+keyword_count_2014 <- as.data.frame(table(keywords[keywords!=""]), 
+                                  stringsAsFactors = FALSE)
+
+
+
+
+
+
+
+```
+
+```{r}
+
+#This is where the normal code starts
+years<-c(yearStart:yearEnd)
+
+```
+
