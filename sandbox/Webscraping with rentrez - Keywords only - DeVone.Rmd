@@ -22,7 +22,7 @@ library(rvest)
 
 n=50 #Set number of search results wanted
 vivax_search <- entrez_search(db = "pubmed",
-                              term = "Biostatistics[MeSH Major Topic", retmax=n) #Altered to view biostats
+                              term = "Biostatistics[MeSH Term]", retmax=n) #Altered to view biostats
 
 multi_summs <- entrez_summary(db="pubmed", id=vivax_search$ids, retmax=n)
 
@@ -58,47 +58,8 @@ for(a in 1:length(keylist)){
 }
 }
 
+keyword_count_df <- as.data.frame(table(keywords[keywords!=""]), 
+                                  stringsAsFactors = FALSE)
+
 print(keywords)
-```
-
-```{r}
-#Test
-pubmed
-
-pubmed <- array(character(),c(2,4,0))
-pubmed[,1]<-1
-
-PlaceKeeper=1
-  
-pubmed[1,PlaceKeeper] <- date_and_cite[PlaceKeeper] #For Title
-
-PlaceKeeper<-PlaceKeeper+1
-
-pubmed[1][PlaceKeeper] <- date_and_cite[PlaceKeeper] #For pmcrefcount
-
-PlaceKeeper<-3
-
-author.df<-date_and_cite[[3]]
-authorlist<-as.vector(author.df[,1])
-pubmed[1][PlaceKeeper] <- authorlist #For authors
-
-PlaceKeeper<-PlaceKeeper+1
-    
-##CANNONT DIRECTLY GET KEY WORDS
-
-url<-paste("https://www.ncbi.nlm.nih.gov/pubmed/",date_and_cite[PlaceKeeper], sep="" )
-
-results <- read_html(url)
-papers <- html_nodes(results, ".rprt")
-
-
-keys_html <- html_nodes(papers, ".keywords")
-keys <- html_text(keys_html)
-if(is.null(dim(keys))){
-pubmed[1][PlaceKeeper] <- NA  
-}else{
-keylist.0 <- unlist(strsplit(keys, ": ",fixed=TRUE))
-keylist<- unlist(strsplit(keylist.0[2], "; "))
-pubmed[1][PlaceKeeper] <- keylist}
-
 ```
