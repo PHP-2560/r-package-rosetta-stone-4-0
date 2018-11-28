@@ -1,0 +1,142 @@
+---
+title: "Untitled"
+output: github_document
+---
+
+```{r}
+install.packages("rentrez")
+install.packages("RCurl")
+install.packages(c('devtools','curl'))
+install.packages('rvest')
+library(rentrez)
+library(RCurl)
+library(c('devtools','curl'))
+library(rvest)
+
+#The NCBI makes data available through a web interface, an FTP server and through a REST API called the Entrez Utilities, this package should allow us to access it.  Some other jazz changed since Adam taught this last so I had to install and load the other packages you see as well.
+```
+
+
+```{r}
+
+entrez_db_summary("pubmed") #Summary of Pubmed
+
+Biostats_Search <- entrez_search(db   = "pubmed",
+              term = "Biostats", retmax=10) #Summary of Pubmed with "Biostats" search, returns as 20 initially, see alteration made to find 50
+```
+
+```{r}
+
+n=50 #Set number of search results wanted
+vivax_search <- entrez_search(db = "pubmed",
+                              term = "biostats", retmax=n) #Altered to view biostats
+
+multi_summs <- entrez_summary(db="pubmed", id=vivax_search$ids, retmax=n)
+
+#extract_from_esummary(multi_summs, "fulljournalname")
+
+date_and_cite <- extract_from_esummary(multi_summs, c("title", "pmcrefcount",  "authors","uid")) ##CAN GET CITATIONS
+#knitr::kable(head(t(date_and_cite)), row.names=FALSE)
+
+#view_summ <- entrez_summary(db="pubmed", id=30243852) #Attempting to grab keywords
+#view_summ
+
+titlelist<-c()
+authors<-array(NA,c(n,50))
+counterlist<-c()
+keywords<-array(NA,c(n,10))
+
+z=1
+
+for(i in 1:n){
+  
+titlelist[i] <- date_and_cite[[z]] #For Title
+
+z<-z+1
+
+counterlist[i] <- date_and_cite[z] #For pmcrefcount
+
+z<-z+1
+
+author.df<-date_and_cite[[z]]#For authors
+authorlist<-as.vector(author.df[,1])
+for(b in 1:length(authorlist)){
+  authors[i,b] <- authorlist[b]
+}
+    
+z<-z+1
+##CANNONT DIRECTLY GET KEY WORDS
+
+url<-paste("https://www.ncbi.nlm.nih.gov/pubmed/",date_and_cite[z], sep="" )
+
+#This body of code grabs the keylist
+results <- read_html(url)
+papers <- html_nodes(results, ".rprt")
+keys_html <- html_nodes(papers, ".keywords")
+keys <- html_text(keys_html)
+
+
+if(length(keys)==0){#If no keywords fill with NA
+keywords[i] <- c(NA)  
+
+}else{#Split of string make a list of characters
+keylist.0 <- unlist(strsplit(keys, ": ",fixed=TRUE))
+keylist<- unlist(strsplit(keylist.0[2], "; "))
+for(a in 1:length(keylist)){
+  keywords[i,a] <- keylist[a]
+}
+}
+
+z<-z+1
+
+}
+
+Titles.keywords<-data.frame(titlelist,keywords)
+Titles.authors<-data.frame(titlelist,authors)
+Titles.Unknown<-data.frame(titlelist,counterlist)
+
+write.csv(Titles.keywords,'Keywords.csv')
+write.csv(Titles.authors,'authors.csv')
+```
+
+```{r}
+#Test
+pubmed
+
+pubmed <- array(character(),c(2,4,0))
+pubmed[,1]<-1
+
+PlaceKeeper=1
+  
+pubmed[1,PlaceKeeper] <- date_and_cite[PlaceKeeper] #For Title
+
+PlaceKeeper<-PlaceKeeper+1
+
+pubmed[1][PlaceKeeper] <- date_and_cite[PlaceKeeper] #For pmcrefcount
+
+PlaceKeeper<-3
+
+author.df<-date_and_cite[[3]]
+authorlist<-as.vector(author.df[,1])
+pubmed[1][PlaceKeeper] <- authorlist #For authors
+
+PlaceKeeper<-PlaceKeeper+1
+    
+##CANNONT DIRECTLY GET KEY WORDS
+
+url<-paste("https://www.ncbi.nlm.nih.gov/pubmed/",date_and_cite[PlaceKeeper], sep="" )
+
+results <- read_html(url)
+papers <- html_nodes(results, ".rprt")
+
+
+keys_html <- html_nodes(papers, ".keywords")
+keys <- html_text(keys_html)
+if(is.null(dim(keys))){
+pubmed[1][PlaceKeeper] <- NA  
+}else{
+keylist.0 <- unlist(strsplit(keys, ": ",fixed=TRUE))
+keylist<- unlist(strsplit(keylist.0[2], "; "))
+pubmed[1][PlaceKeeper] <- keylist}
+
+```
