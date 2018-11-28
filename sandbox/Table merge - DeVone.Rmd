@@ -1,26 +1,15 @@
 ---
 title: "Untitled"
-output: github_document
+output: html_document
 ---
 
 ```{r}
-install.packages("rentrez")
-install.packages("RCurl")
-install.packages(c('devtools','curl'))
-install.packages('rvest')
-library(rentrez)
-library(RCurl)
-library(c('devtools','curl'))
-library(rvest)
 
-#The NCBI makes data available through a web interface, an FTP server and through a REST API called the Entrez Utilities, this package should allow us to access it.  Some other jazz changed since Adam taught this last so I had to install and load the other packages you see as well.
-```
+#This will need to be defined by the user for now dummy set below used
+yearStart<-2014
+yearEnd<-2018
 
-
-
-```{r}
-
-n=1000 #Set number of search results wanted
+n=361 #Set number of search results wanted
 term <- "Biostatistics[MeSH Term]"
 year<-2014
 search <-paste(term, "AND (", year, "[PDAT])")
@@ -62,16 +51,22 @@ for(a in 1:length(keylist)){
 }
 }
 
-keyword_count_df <- as.data.frame(table(keywords[keywords!=""]), 
+
+keyword_count_2014 <- as.data.frame(table(keywords[keywords!=""]), 
                                   stringsAsFactors = FALSE)
 
-print(keyword_count_df)
 
-###Check date
 
-date<- extract_from_esummary(multi_summs,"epubdate") 
-date
+
 
 
 
 ```
+
+```{r}
+
+#This is where the normal code starts
+years<-c(yearStart:yearEnd)
+
+```
+
