@@ -2,7 +2,7 @@ library(rentrez)
 library(rvest)
 library(stringr)
 
-#Simplified way to grab keywords of all articles from a given pubmed search
+#Simplified way to grab keywords of all articles from a given pubmed
 
 
 n=50 #Set number of search results wanted
@@ -20,8 +20,9 @@ get_keywords <- function(x){
   results <- read_html(url)
   papers <- html_nodes(results, ".rprt")
   keys_html <- html_nodes(papers, ".keywords")
-  keys <- html_text(keys_html)
-  keys <- str_split(str_remove(keys, "KEYWORDS: "), ";")
+  keys <- html_text(keys_html) %>%
+          str_remove("KEYWORDS: ") %>%
+          str_split(";")
 }
 
 keywords <- as.data.frame(table(unlist(lapply(date_and_cite, get_keywords))))
