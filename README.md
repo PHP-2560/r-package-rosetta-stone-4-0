@@ -10,7 +10,7 @@ Our package will be an extension of our final in class on webscrapeing pubmed.  
 
 Kira will be primiraly be involved in webscraping
 Frank will be primiraly be involved in text mining and code involving the Rentrez
-Blake will be primiraly be involved in orginization of data involving citations, which needs to be pulled seperatly and joined with the other data
+Blake will be primiraly be involved in orginization of data involving citations, which needs to be pulled seperatly and joined with the other data.
 Nadia will be primiraly involved in making the data output to knit organized, as well as creating the graphs our package will product
 
 Our bare minimum goal is the replication of what was done before as a package.  Pulling the top ten keywords based upon a user given search over the last ten years.   We will then work on grabing and outputting citations for specific papers.  Goals beyond that will be concived and worked on time permitting.
