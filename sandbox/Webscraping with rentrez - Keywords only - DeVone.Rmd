@@ -20,11 +20,15 @@ library(rvest)
 
 ```{r}
 
-n=50 #Set number of search results wanted
-vivax_search <- entrez_search(db = "pubmed",
-                              term = "Biostatistics[MeSH Term]", retmax=n) #Altered to view biostats
+n=1000 #Set number of search results wanted
+term <- "Biostatistics[MeSH Term]"
+year<-2014
+search <-paste(term, "AND (", year, "[PDAT])")
 
-multi_summs <- entrez_summary(db="pubmed", id=vivax_search$ids, retmax=n)
+vivax_search <- entrez_search(db = "pubmed",
+                              term = search, retmax=n) #Altered to view biostats
+
+multi_summs <- entrez_summary(db="pubmed", id=vivax_search$ids)#, retmax=n)
 
 
 date_and_cite <- extract_from_esummary(multi_summs,"uid") ##CAN GET CITATIONS
@@ -61,5 +65,13 @@ for(a in 1:length(keylist)){
 keyword_count_df <- as.data.frame(table(keywords[keywords!=""]), 
                                   stringsAsFactors = FALSE)
 
-print(keywords)
+print(keyword_count_df)
+
+###Check date
+
+date<- extract_from_esummary(multi_summs,"epubdate") 
+date
+
+
+
 ```
