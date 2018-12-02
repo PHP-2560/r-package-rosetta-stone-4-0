@@ -4,12 +4,24 @@ output: html_document
 ---
 
 ```{r}
+library(dplyr)
+setwd("C:/Users/Frank/Desktop/Git Work/In-Class work/Final Project/r-package-rosetta-stone-4-0/Data")
+#When run we will need to import tables from our keyword grab.  We should be able to build this with variables that the user will give.
+
+#Say the term is "Biostatistics[MeSH Term]" and the range is 2014 to 2018
+
+Term<-"Biostatistics[MeSH Term]"
+Years<-c(2014:2018)
+
+#Make totals data set
+Test<-paste("Keywords_ ",Term,"AND (",Years[1],"[PDAT]).csv")
+Test=="Keywords_ Biostatistics[MeSH Term] AND ( 2014 [PDAT]).csv"
+Total_Freq<-subset(read.csv(Test), select=(2:3))
+
+for(i in i+1:length(Years)){
+  Total_Freq <- left_join(Total_Freq,subset(read.csv(paste("Keywords_",Term,"AND (",Years[i],"[PDAT]).csv")), select=(2:3)), by = "Var1")
+}
+
 ```
 
-```{r}
-
-#This is where the normal code starts
-years<-c(yearStart:yearEnd)
-
-```
 
