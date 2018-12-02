@@ -34,4 +34,4 @@ get_keywords <- function(x){
 }
 
 keywords <- as.data.frame(table(unlist(lapply(date_and_cite, get_keywords))))
-write.csv(keywords, file = paste("Keywords_",search,".csv"))#Note from Frank: Included file output for table merge
+write.csv(keywords, file = paste("Keywords_",search,".csv",sep=""))#Note from Frank: Included file output for table merge
