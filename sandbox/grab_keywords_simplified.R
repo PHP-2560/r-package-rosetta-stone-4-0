@@ -2,14 +2,15 @@ library(rentrez)
 library(rvest)
 library(stringr)
 
-#Make sure to change your working directory to go to the Data file
+#Make sure to change your working directory to go to the Data file, 
+#Use getwd and add "/Data"
 setwd("C:/Users/Frank/Desktop/Git Work/In-Class work/Final Project/r-package-rosetta-stone-4-0/Data")
 
 #Simplified way to grab keywords of all articles from a given pubmed
 
 #Note from Frank: Included search variable 
 term <- "Biostatistics[MeSH Term]"
-year<-2014
+year<-2018
 search <-paste(term, "AND (", year, "[PDAT])")
 
 n=50 #Set number of search results wanted
