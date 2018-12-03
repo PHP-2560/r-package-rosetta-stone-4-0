@@ -8,9 +8,11 @@ setwd("C:/Users/Frank/Desktop/Git Work/In-Class work/Final Project/r-package-ros
 
 #Simplified way to grab keywords of all articles from a given pubmed
 
+#NOTE: I had a 2014 search with no hits, I got a error message but we need to make the break or make an empty file casue it just used the save 2015 data
+
 #Note from Frank: Included search variable 
-term <- "Biostatistics[MeSH Term]"
-year<-2018
+term <- "Biostatistics[MeSH Term] AND epidemic"
+year<-2016
 search <-paste(term, "AND (", year, "[PDAT])")
 
 n=50 #Set number of search results wanted
