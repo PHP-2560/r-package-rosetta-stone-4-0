@@ -10,18 +10,43 @@ setwd("C:/Users/Frank/Desktop/Git Work/In-Class work/Final Project/r-package-ros
 
 #Say the term is "Biostatistics[MeSH Term]" and the range is 2014 to 2018
 
-Term<-"Biostatistics[MeSH Term]"
-Years<-c(2014:2018)
+term <- "Biostatistics[MeSH Term] AND epidemic"
+Years<-c(2015:2018)
 
 #Make totals data set
-Test<-paste("Keywords_ ",Term,"AND (",Years[1],"[PDAT]).csv")
-Test=="Keywords_ Biostatistics[MeSH Term] AND ( 2014 [PDAT]).csv"
-Total_Freq<-subset(read.csv(Test), select=(2:3))
+# Test<-paste("Keywords_",term," AND ( ",Years[1]," [PDAT]).csv",sep="")
+# Test=="Keywords_Biostatistics[MeSH Term] AND epidemic AND ( 2015 [PDAT]).csv"
 
-for(i in i+1:length(Years)){
-  Total_Freq <- left_join(Total_Freq,subset(read.csv(paste("Keywords_",Term,"AND (",Years[i],"[PDAT]).csv")), select=(2:3)), by = "Var1")
+Blocker<-c() #We'll fill this with blank years for our naming
+
+First<-paste("Keywords_",term," AND ( ",Years[1]," [PDAT]).csv",sep="")
+#file.exists(First)
+First_Table<-read.csv(First)
+Total_Freq<-subset(First_Table, select=(2:3))
+
+for(i in 2:length(Years)){
+  Filename<-paste("Keywords_",term," AND ( ",Years[i]," [PDAT]).csv",sep="")
+  ith_table<-read.csv(Filename)
+  if(identical(ith_table[1,2],NA)){#Stops blank years from screwing us up
+    print(paste("Year",Years[i],"is empty"))
+    Blocker[length(Blocker)+1]<-Years[i]
+  }else{
+  print(paste("was here with",Filename)) #For testing
+  To_Join<-subset(ith_table, select=(2:3))
+  Total_Freq <- full_join(Total_Freq,To_Join, by = "Var1")
+  }
 }
 
-```
+name_list<-c("Keyword")
+for(i in 1:length(Years)){
+  if(is.na(match(Years[i],Blocker))==FALSE){
+    
+  }else{
+    name_list[length(name_list)+1]<-Years[i]
+}
+}
+names(Total_Freq)<-name_list
+write.csv(Total_Freq,'Total_Keywords.csv')
 
+```
 
