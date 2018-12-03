@@ -4,13 +4,14 @@ output: github_document
 ---
 
 ```{r}
-install.packages("rentrez")
-install.packages("RCurl")
-install.packages(c('devtools','curl'))
-install.packages('rvest')
+#install.packages("rentrez")
+#install.packages("RCurl")
+#install.packages(c('devtools','curl'))
+#install.packages('rvest')
 library(rentrez)
 library(RCurl)
-library(c('devtools','curl'))
+library(devtools)
+library(curl)
 library(rvest)
 
 #The NCBI makes data available through a web interface, an FTP server and through a REST API called the Entrez Utilities, this package should allow us to access it.  Some other jazz changed since Adam taught this last so I had to install and load the other packages you see as well.
@@ -21,7 +22,7 @@ library(rvest)
 ```{r}
 
 n=1000 #Set number of search results wanted
-term <- "Biostatistics[MeSH Term]"
+term <- "Biostatistics[MeSH Term] AND "
 year<-2014
 search <-paste(term, "AND (", year, "[PDAT])")
 
