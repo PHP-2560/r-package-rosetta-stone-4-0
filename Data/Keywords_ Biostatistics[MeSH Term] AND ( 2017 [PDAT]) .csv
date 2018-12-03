@@ -1,0 +1,207 @@
+"","Var1","Freq"
+"1","2<U+2009>×<U+2009>2 factorial design",1
+"2","3-way data",1
+"3","AIDS",1
+"4","alpha and beta values",1
+"5","Anderson–Darling test",1
+"6","assignment tests",1
+"7","asymptotic linear estimator",1
+"8","average bioequivalence (ABE)",1
+"9","balanced design",1
+"10","Bayesian",1
+"11","Bayesian inference",2
+"12","Bayesian methods",1
+"13","Bayesian noninferiority test",1
+"14","beta barrel",1
+"15","bias in parameters",1
+"16","binomial probability",1
+"17","Biostatistic",1
+"18","biostatistics",3
+"19","Biostatistics",1
+"20","Blended learning",1
+"21","bootstrap",1
+"22","Burman loss",1
+"23","Candecomp/Parafac",1
+"24","canonical gradient",1
+"25","CAR model",1
+"26","censoring",2
+"27","central limit theorem",1
+"28","childhood pulmonary tuberculosis",1
+"29","ChIP-seq",1
+"30","circadian rhythms",1
+"31","Classification",1
+"32","classification algorithm",1
+"33","classification analysis",1
+"34","clinical research",1
+"35","Cochrane",1
+"36","Competences",1
+"37","competing risks",2
+"38","complex networks",1
+"39","computational biology",2
+"40","conditional inference tree",1
+"41","conditional power prior",1
+"42","confidence intervals",1
+"43","constrained distribution",1
+"44","control rate",1
+"45","copula",1
+"46","correlations",1
+"47","covariance matrix",1
+"48","cross-validated targeted minimum loss estimation (CV-TMLE)",1
+"49","cross-validation",1
+"50","cumulative incidence",1
+"51","cure fraction",1
+"52","current status data",1
+"53","Data analyses",1
+"54","data augmentation",1
+"55","dengue fever",1
+"56","detection limit",1
+"57","diurnal rhythms",1
+"58","Donsker class",1
+"59","effect size",1
+"60","effectiveness of subgrouping",1
+"61","efficient estimation",1
+"62","efficient estimator",1
+"63","efficient influence curve",1
+"64","egocentric data",1
+"65","EM algorithm",2
+"66","empirical process",1
+"67","entropy",1
+"68","epidemics",1
+"69","epidemiology",1
+"70","European Society for Medical Oncology",1
+"71","evolutionary graph theory",1
+"72","expected time to signal",1
+"73","extended equivalence theorem",1
+"74","factorial designs",1
+"75","Fisher exact test",1
+"76","fixed effects model",1
+"77","flexible parametric",1
+"78","functional genomics",1
+"79","Gaussian process",1
+"80","generalized linear mixed model",1
+"81","generalized Willmore energy",1
+"82","goodness-of-fit",1
+"83","guidelines",1
+"84","healthcare system evaluation",1
+"85","heterogeneity",1
+"86","heterogeneous costs",1
+"87","heterogeneous variance",1
+"88","hidden mover-stayer model",1
+"89","hierarchical model",1
+"90","high-dimensional data",1
+"91","higher-order asymptotics",1
+"92","higher-order conditional dependence",1
+"93","highly adaptive Lasso",1
+"94","highly variable drugs (HVD)",1
+"95","historical data",1
+"96","HIV care cascade",1
+"97","HIV care continuum",1
+"98","hospital care data",1
+"99","human",1
+"100","hybrid",1
+"101","hypothesis development",1
+"102","incubation period",1
+"103","infant mortality",1
+"104","infectious disease",2
+"105","influence curve",1
+"106","influenza",1
+"107","interval-censored data",1
+"108","introgression",1
+"109","isotonic regression",1
+"110","joint model",1
+"111","kernel conditional density estimation",1
+"112","kernel smoothing",1
+"113","latent class model",1
+"114","likelihood inference",1
+"115","log-determinant,sparse matrix",1
+"116","longitudinal data",1
+"117","magnitude of clinical benefit scale",1
+"118","Manifold valued statistics",1
+"119","Master",1
+"120","mathematical model",1
+"121","MCMC algorithm",1
+"122","mean curvature",1
+"123","measurement error",3
+"124","meta-analysis",1
+"125","meta-epidemiology",1
+"126","metabolomics",1
+"127","minimal surface",1
+"128","misclassification",1
+"129","Mixed treatment comparison",1
+"130","mixture model",1
+"131","Möbius transformation",1
+"132","modeling",1
+"133","monotone B-spline",1
+"134","Monte Carlo integrations",1
+"135","Monte Carlo Newton-Raphson",1
+"136","multicenter trial",1
+"137","multiple comparisons",1
+"138","multistate models",1
+"139","Network meta-analysis",1
+"140","network sampling",1
+"141","nonlinear mixed effects model",1
+"142","nonparametric likelihood",1
+"143","nonparametrics",1
+"144","normality",1
+"145","null hypothesis",1
+"146","one-step TMLE",1
+"147","panel data",1
+"148","penalized estimation",1
+"149","Permutation testing",1
+"150","personalized treatment",1
+"151","pharmacokinetic",1
+"152","population genetics",1
+"153","population structure",1
+"154","posterior probability",1
+"155","precision medicine",1
+"156","prediction",1
+"157","predictive biomarker",1
+"158","Principal geodesic analysis",1
+"159","prognostic factors",1
+"160","protein structure",1
+"161","proteomics",1
+"162","Public health",1
+"163","random effects linear model",1
+"164","randomised trials",1
+"165","randomization",1
+"166","reference scaled average bioequivalence (RSABE)",1
+"167","regression",1
+"168","replication crisis",1
+"169","reporting error",1
+"170","research question",1
+"171","Riemannian metrics",1
+"172","RNA-seq",1
+"173","ROC curves",1
+"174","scientific rigor",1
+"175","score statistic",1
+"176","sequential design",1
+"177","sequential probability ratio test",1
+"178","sexual networks",1
+"179","shrinkage and smoothing",1
+"180","shrinkage estimation",1
+"181","significance level adjustment",1
+"182","simulation",1
+"183","single arm studies",1
+"184","state transition representation",1
+"185","Statistical shape analysis",1
+"186","statistics",1
+"187","subdistribution",1
+"188","subdistribution hazards",1
+"189","subgroup analysis",1
+"190","super-learning",1
+"191","surveillance",1
+"192","survival analysis",1
+"193","survival tree",1
+"194","systems biology",2
+"195","targeted minimum loss estimation (TMLE)",1
+"196","tensor-based methods",1
+"197","thresholding estimation",1
+"198","traditional Chinese medicine",1
+"199","treatment balance",1
+"200","treatment effect heterogeneity",1
+"201","Treatment outcome",1
+"202","Tucker3",1
+"203","two-stage designs (TSD)",1
+"204","underreporting",1
+"205","von Mises distribution",1
+"206","wrapped Cauchy distribution",1

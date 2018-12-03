@@ -1,0 +1,152 @@
+"","Var1","Freq"
+"1","<U+03C7>2",1
+"2","<U+03D5>",1
+"3","accelerated failure time model",1
+"4","adaptive design",1
+"5","adaptive Gauss-Hermite quadrature",1
+"6","allele matching",1
+"7","allelic dosage uncertainty",1
+"8","Bayesian nonparametrics",1
+"9","Bayesian regularisation",1
+"10","Bayesian variable selection",1
+"11","Biostatistical analysis",1
+"12","Biostatistics",1
+"13","Bivariate splines",1
+"14","Borrowing of strength",1
+"15","brand-and-bound algorithm",1
+"16","case-cohort",1
+"17","causal-inference approach",1
+"18","Classical test theory",1
+"19","Clinical Trial",1
+"20","clustering",1
+"21","coefficient",1
+"22","Constrained maximum likelihood estimates",1
+"23","correlation",1
+"24","Daptomycin",1
+"25","delayed entry",1
+"26","descriptive statistics",1
+"27","Design of experiments",1
+"28","detectability",1
+"29","diagnostic biomarkers",1
+"30","diagnostic test",1
+"31","diet analysis",1
+"32","dimensionality reduction",1
+"33","Dirichlet process",1
+"34","DNA barcoding",1
+"35","EM algorithm",1
+"36","environmental DNA",1
+"37","Epidemiology",1
+"38","exponential family",1
+"39","external validation",1
+"40","false negatives",1
+"41","Fractional factorial approach",1
+"42","Gaussian graphical model",1
+"43","Gaussian process latent variable model",1
+"44","Generalised mixed linear model",1
+"45","genotyping by sequencing",1
+"46","group sequential methods",1
+"47","Health care quality",1
+"48","health care utilization",1
+"49","hierarchical Bayesian modelling",1
+"50","high dimension",1
+"51","hypertension",1
+"52","imperfect detection",1
+"53","imputation quality",1
+"54","Influential observation",1
+"55","interpretation",1
+"56","interval-censored data",1
+"57","item response theory",1
+"58","joint analysis",1
+"59","joint model",1
+"60","joint modelling",1
+"61","left truncation",1
+"62","limit of detection (LOD)",1
+"63","linear model",1
+"64","longitudinal biomarker",1
+"65","longitudinal data",1
+"66","Mantel-Haenszel chi-squared statistic",1
+"67","Markov Chain Monte Carlo",1
+"68","medical education",1
+"69","Medical Education",1
+"70","meta-analysis",1
+"71","meta-analytic approach",1
+"72","method of variance estimate recovery",1
+"73","microsatellite",1
+"74","missing data",1
+"75","mixed effects",1
+"76","mixed effects model",1
+"77","mixed treatment comparisons",1
+"78","mixture model",1
+"79","model diagnostics",1
+"80","modified likelihood ratio test",1
+"81","multiple imputation",1
+"82","multiple treatments meta-analysis",1
+"83","multivariate frailty model",1
+"84","Multivariate log gamma distribution",1
+"85","multivariate longitudinal data",1
+"86","multivariate meta-analysis",1
+"87","multivariate normal",1
+"88","n-Dodecane",1
+"89","N - 1 chi-squared statistic",1
+"90","occupancy",1
+"91","oncology",1
+"92","optimal design",1
+"93","Optimization",1
+"94","overfitting",1
+"95","Oxygen vector",1
+"96","parametric survival analysis",1
+"97","Pearson's chi-squared statistics",1
+"98","perturbation scheme",1
+"99","Poisson model",1
+"100","pollen dispersal",1
+"101","polyploid",1
+"102","polyploidy",1
+"103","population genomics",1
+"104","power",2
+"105","PPV curve",1
+"106","predator prey interactions",1
+"107","prognostic model",1
+"108","prostate cancer",1
+"109","protein network",1
+"110","quality measurement",1
+"111","r",1
+"112","R",1
+"113","R package surrogate",1
+"114","RADseq",1
+"115","random-effects models",1
+"116","random effects",1
+"117","rare events",1
+"118","Rasch model",1
+"119","Recombinant protein",1
+"120","Recurrent events",1
+"121","regression",1
+"122","reliability",1
+"123","research",1
+"124","Response surface methodology",2
+"125","sample size",2
+"126","SAS",1
+"127","semiparametric regression",1
+"128","shrinkage",1
+"129","Simon's optimal design",1
+"130","simulations",1
+"131","Soluble protein expression",1
+"132","spike and slab priors",1
+"133","SPSS",1
+"134","Stata",1
+"135","statistical software",1
+"136","statistics",1
+"137","stepwise selection",1
+"138","Streptomyces roseosporus",1
+"139","study weights",1
+"140","surrogate endpoint validation",1
+"141","surrogate markers",1
+"142","surrogate threshold effect",1
+"143","survival analysis",2
+"144","third-order accurate",1
+"145","training",1
+"146","type I error rates",1
+"147","variable selection",1
+"148","variance components",1
+"149","variance prior",1
+"150","Vision",1
+"151","Weibull proportional hazards model",1
