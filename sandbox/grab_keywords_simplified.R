@@ -2,16 +2,12 @@ library(rentrez)
 library(rvest)
 library(stringr)
 
-#Make sure to change your working directory to go to the Data file, 
-#Use getwd and add "/Data"
-setwd("C:/Users/Frank/Desktop/Git Work/In-Class work/Final Project/r-package-rosetta-stone-4-0/Data")
-
 #Simplified way to grab keywords of all articles from a given pubmed
 
 #NOTE: I had a 2014 search with no hits, I got a error message but we need to make the break or make an empty file casue it just used the save 2015 data
 
 #Note from Frank: Included search variable 
-term <- "Biostatistics[MeSH Term] AND epidemic"
+term <- "Biostatistics[MeSH Term] AND sugar"
 year<-2016
 search <-paste(term, "AND (", year, "[PDAT])")
 
@@ -36,4 +32,4 @@ get_keywords <- function(x){
 }
 
 keywords <- as.data.frame(table(unlist(lapply(date_and_cite, get_keywords))))
-write.csv(keywords, file = paste("Keywords_",search,".csv",sep=""))#Note from Frank: Included file output for table merge
+write.csv(keywords, file = paste("Data/Keywords_",search,".csv",sep=""))#Note from Frank: Included file output for table merge
