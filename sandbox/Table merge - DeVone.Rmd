@@ -5,7 +5,7 @@ output: html_document
 
 ```{r}
 library(dplyr)
-setwd("C:/Users/Frank/Desktop/Git Work/In-Class work/Final Project/r-package-rosetta-stone-4-0/Data")
+#setwd("C:/Users/Frank/Desktop/Git Work/In-Class work/Final Project/r-package-rosetta-stone-4-0/Data")
 #When run we will need to import tables from our keyword grab.  We should be able to build this with variables that the user will give.
 
 #Say the term is "Biostatistics[MeSH Term]" and the range is 2014 to 2018
@@ -19,13 +19,13 @@ Years<-c(2015:2018)
 
 Blocker<-c() #We'll fill this with blank years for our naming
 
-First<-paste("Keywords_",term," AND ( ",Years[1]," [PDAT]).csv",sep="")
+First <- paste("../Data/Keywords_",term," AND ( ",Years[1]," [PDAT]).csv",sep="")
 #file.exists(First)
 First_Table<-read.csv(First)
 Total_Freq<-subset(First_Table, select=(2:3))
 
 for(i in 2:length(Years)){
-  Filename<-paste("Keywords_",term," AND ( ",Years[i]," [PDAT]).csv",sep="")
+  Filename<-paste("../Data/Keywords_",term," AND ( ",Years[i]," [PDAT]).csv",sep="")
   ith_table<-read.csv(Filename)
   if(identical(ith_table[1,2],NA)){#Stops blank years from screwing us up
     print(paste("Year",Years[i],"is empty"))
@@ -46,7 +46,7 @@ for(i in 1:length(Years)){
 }
 }
 names(Total_Freq)<-name_list
-write.csv(Total_Freq,'Total_Keywords.csv')
+write.csv(Total_Freq,'../Data/Total_Keywords.csv')
 
 ```
 
