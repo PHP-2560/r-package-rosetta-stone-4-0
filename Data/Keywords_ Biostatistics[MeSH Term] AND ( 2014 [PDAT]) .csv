@@ -1,0 +1,236 @@
+"","Var1","Freq"
+"1","adaptive LASSO",1
+"2","Air pollution",1
+"3","amisulpride",1
+"4","analysis of variance (ANOVA)",1
+"5","asymptotic normality",1
+"6","Attributable fraction",1
+"7","augment",1
+"8","average run length",1
+"9","B-spline",1
+"10","Bayesian",1
+"11","Bayesian analysis",1
+"12","Bayesian isotonic regression transformation",1
+"13","Bayesian meta-analysis",1
+"14","Bayesian variable selection",1
+"15","benefits",1
+"16","bias formula",1
+"17","bias modeling",1
+"18","Bivariate generalized linear mixed effects model",1
+"19","bond strength",1
+"20","bootstrap",2
+"21","Bootstrap",1
+"22","c-statistic",1
+"23","case–control study",1
+"24","Categorical outcome",1
+"25","causal inference",3
+"26","cause specific hazards",1
+"27","censored data",1
+"28","censored regression",1
+"29","clinical prediction models",1
+"30","clustered mixed outcome",1
+"31","Cognitive neuroscience",1
+"32","cohort studies",1
+"33","comparative effectiveness",1
+"34","composite likelihood",1
+"35","Conditional independence",1
+"36","continuity correction",1
+"37","contrast",1
+"38","correlation coefficient",1
+"39","cost-effectiveness",1
+"40","Counterfactual",1
+"41","Covariate modeling",1
+"42","Cox proportional hazards model",1
+"43","cross-design synthesis",1
+"44","data splitting",1
+"45","Davies problem",1
+"46","delayed start design",1
+"47","density ratio",1
+"48","density ratio model",1
+"49","Developmental growth",1
+"50","diabetes",1
+"51","diagnostic accuracy",1
+"52","diagnostic review",1
+"53","Diffusion tensor imaging",1
+"54","discrimination",1
+"55","dispersion models",1
+"56","dose-efficacy surface",1
+"57","dose-response",1
+"58","dose-toxicity surface",1
+"59","doubly robust estimation",1
+"60","Dynamic modeling",1
+"61","economic evaluation",1
+"62","EM algorithm",1
+"63","Environmental health",1
+"64","evidence-based medicine",1
+"65","Functional principal component analysis",1
+"66","Gaussian copula",1
+"67","Gaussian process",1
+"68","Gaussian process regression",1
+"69","gene-environment dependence",1
+"70","gene-environment interaction",1
+"71","generalized estimating equations",1
+"72","generalized evidence synthesis",1
+"73","generalized partially linear model",1
+"74","Gibbs sampling",1
+"75","goodness-of-fit",1
+"76","goodness-of-fit test",1
+"77","gradient function",1
+"78","growth curves",1
+"79","guidelines",1
+"80","health care",1
+"81","Health policy",1
+"82","health technology assessment",1
+"83","heterogeneity",1
+"84","hierarchical Bayesian models",1
+"85","high-dimensional propensity score",1
+"86","HTS assay",1
+"87","Huntington disease",1
+"88","inconsistency",1
+"89","indirect composite resin",1
+"90","instrumental variables",1
+"91","inverse-probability weighting",1
+"92","inverse probability of censoring weights",1
+"93","inverse probability weighting",1
+"94","item count technique",1
+"95","joint models",2
+"96","joint regression analysis",1
+"97","Kernel methods",1
+"98","Kidney failure",1
+"99","Kullback-Leibler divergence",1
+"100","latent variable model",1
+"101","linear mixed model",1
+"102","lipids",1
+"103","literature search",1
+"104","LOCF approach",1
+"105","logistic regression",2
+"106","Longitudinal data analysis",1
+"107","longitudinal regression",1
+"108","M-estimation",1
+"109","marginal structural model",1
+"110","marginal structural models",1
+"111","matching",1
+"112","maternity care",1
+"113","matrix ordering",1
+"114","Maximum of score statistics",1
+"115","mean survival time",1
+"116","meta-analysis",3
+"117","meta-analysis",2
+"118","meta-review",1
+"119","Metal mixtures",1
+"120","methylmercury",1
+"121","missing at random",1
+"122","missing covariate",1
+"123","missing data",2
+"124","missing not at random",1
+"125","mixed-effect model",1
+"126","mixed-effects location scale model",1
+"127","mixed models",1
+"128","Mixture regression",1
+"129","model validation",1
+"130","moderator analyses",1
+"131","multinomial logistic regression",1
+"132","multiplicative interaction",1
+"133","multiplicity corrections",1
+"134","multivariate data analysis.",1
+"135","multivariate generalized linear model",1
+"136","multivariate outcomes",1
+"137","National Health and Nutrition Examination Survey",1
+"138","Nd:YAG laser",1
+"139","negative binomial item count technique",1
+"140","network meta-analysis",1
+"141","nomogram",1
+"142","Non-stationarity",1
+"143","observational studies",1
+"144","observational study",2
+"145","optimal treatment regime",1
+"146","ordinal exposures",1
+"147","organization of health services",1
+"148","p-value",1
+"149","partial correlation",1
+"150","partial effect sizes",1
+"151","patient-centred care",1
+"152","pediatric",1
+"153","periodontal disease",1
+"154","pharmacology",1
+"155","Phelan-McDermid syndrome",1
+"156","plateau",1
+"157","point pattern",1
+"158","Poisson item count technique",1
+"159","poly-weibull",1
+"160","polyhazard",1
+"161","polyunsaturated fatty acids",1
+"162","post processing",1
+"163","potential outcome",1
+"164","potential outcomes",1
+"165","power analysis",1
+"166","prediction",2
+"167","profession and professionalization",1
+"168","propensity scores",1
+"169","proportial odds regression",1
+"170","proportion data",1
+"171","pseudo-likelihood",2
+"172","Quantile estimation",1
+"173","quantile regression",1
+"174","random coefficient model",1
+"175","random effects",1
+"176","randomized control trials",1
+"177","randomized controlled trials",1
+"178","rare events",1
+"179","Real-time prediction",1
+"180","receiver operating characteristic curve",1
+"181","recurrence interval",1
+"182","regression",1
+"183","regression results",1
+"184","Renal medicine",1
+"185","repeated measurements",1
+"186","repeated measures",1
+"187","research synthesis",1
+"188","ridge regression",1
+"189","rotavirus",1
+"190","safety",1
+"191","scan statistic",1
+"192","schizophrenia",1
+"193","seasonality",1
+"194","SEM",1
+"195","semicontinuous data",1
+"196","semiparametric likelihood",1
+"197","semipartial correlation",1
+"198","sensitive questions",1
+"199","sequential monitoring",1
+"200","shared-parameter models",1
+"201","shrinkage estimation",1
+"202","single-index model",1
+"203","Skewed function",1
+"204","small trial designs",1
+"205","sparse data",1
+"206","spatially varying covariate effects",1
+"207","spherical transformation",1
+"208","stabilized weights",1
+"209","statistical significance testing",1
+"210","stepped wedge design",1
+"211","Stochastic processes",1
+"212","subpopulation analysis",1
+"213","Super Learning",1
+"214","surface treatment",1
+"215","surrogate endpoint",1
+"216","survival analysis",2
+"217","survival data",1
+"218","survival extrapolation",1
+"219","synchrotron Fourier transform infrared (S-FTIR) microspectroscopy",1
+"220","t-year survivor prediction rule",1
+"221","technology in health care",1
+"222","Thraustochytrids",1
+"223","time-dependent confounding",1
+"224","time-dependent receiver operating characteristic curve",1
+"225","time-to-event outcomes",1
+"226","Towers Task",1
+"227","toxicology",1
+"228","treatment crossover",1
+"229","treatment switching",1
+"230","Type I errors",1
+"231","unmeasured confounders",1
+"232","vaccination",1
+"233","vaccine safety",1
+"234","variable selection",1
+"235","zero-inflated count data",1

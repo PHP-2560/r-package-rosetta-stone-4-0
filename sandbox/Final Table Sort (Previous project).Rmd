@@ -1,0 +1,65 @@
+*Guys there's probably a way to automate this for when we do the project, but the way we read in the data may change by then so I opted to do this as below for now*
+
+```{r}
+#Run to read in the files, also cleans the left column out
+
+Freq_2008 <- read.csv("keywords2008.csv")
+Freq_2008 <- subset(Freq_2008, select=(2:3))
+
+Freq_2009 <- read.csv("keywords2009.csv")
+Freq_2009 <- subset(Freq_2009, select=(2:3))
+
+Freq_2010 <- read.csv("keywords2010.csv")
+Freq_2010 <- subset(Freq_2010, select=(2:3))
+
+Freq_2011 <- read.csv("keywords2011.csv")
+Freq_2011 <- subset(Freq_2011, select=(2:3))
+
+Freq_2012 <- read.csv("keywords2012.csv")
+Freq_2012 <- subset(Freq_2012, select=(2:3))
+
+Freq_2013 <- read.csv("keywords2013.csv")
+Freq_2013 <- subset(Freq_2013, select=(2:3))
+
+Freq_2014 <- read.csv("keywords2014.csv")
+Freq_2014 <- subset(Freq_2014, select=(2:3))
+
+Freq_2015 <- read.csv("keywords2015.csv")
+Freq_2015 <- subset(Freq_2015, select=(2:3))
+
+Freq_2016 <- read.csv("keywords2016.csv")
+Freq_2016 <- subset(Freq_2016, select=(2:3))
+
+Freq_2017 <- read.csv("keywords2017.csv")
+Freq_2017 <- subset(Freq_2017, select=(2:3))
+
+Freq_2018 <- read.csv("keywords2018.csv")
+Freq_2018 <- subset(Freq_2018, select=(2:3))
+
+Freq_all  <- read.csv("Sorted_counted_kw_2008-2018.csv")
+Freq_all <- subset(Freq_all, select=(2:3))
+Freq_all <-Freq_all[2:11,]
+```
+
+```{r}
+library(dplyr)
+
+
+Total_Freq <- left_join(Freq_all,Freq_2008, by = "Var1")
+Total_Freq <- left_join(Total_Freq,Freq_2009, by = "Var1")
+Total_Freq <- left_join(Total_Freq,Freq_2010, by = "Var1")
+Total_Freq <- left_join(Total_Freq,Freq_2011, by = "Var1")
+Total_Freq <- left_join(Total_Freq,Freq_2012, by = "Var1")
+Total_Freq <- left_join(Total_Freq,Freq_2013, by = "Var1")
+Total_Freq <- left_join(Total_Freq,Freq_2014, by = "Var1")
+Total_Freq <- left_join(Total_Freq,Freq_2015, by = "Var1")
+Total_Freq <- left_join(Total_Freq,Freq_2016, by = "Var1")
+Total_Freq <- left_join(Total_Freq,Freq_2017, by = "Var1")
+Total_Freq <- left_join(Total_Freq,Freq_2018, by = "Var1")
+
+names(Total_Freq)<-c("Keyword","Total","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018")
+
+write.csv(Total_Freq,'Total_Keywords.csv')
+```
+
+
