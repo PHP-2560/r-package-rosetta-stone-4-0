@@ -5,7 +5,7 @@ library(stringr)
 #Simplified way to grab keywords of all articles from a given pubmed
 
 
-n=50 #Set number of search results wanted
+n=10000 #Set number of search results wanted
 vivax_search <- entrez_search(db = "pubmed",
                               term = "Biostatistics[MeSH Major Topic", retmax=n) #Altered to view biostats
 
