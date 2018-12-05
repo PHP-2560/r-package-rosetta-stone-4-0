@@ -9,3 +9,4 @@ time_elapsed <- function(query){
 
 example <- time_elapsed(query = "health")
 
+example[2]* 60 / example[1]
