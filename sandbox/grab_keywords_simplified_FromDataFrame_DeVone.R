@@ -7,6 +7,7 @@ library(rentrez)
 library(stringr)
 library(rvest)
 library(dplyr)
+library(rebus)
 
 #example to load
 example_load <- as.data.frame(source("example_data/example.txt"), stringsAsFactors = F)[, -6]
@@ -26,6 +27,7 @@ Unlisted<- unlist(Filtered_Keylist$keywords)
 
 keyword_count_df <- as.data.frame(table(Unlisted[Unlisted!=""]), 
                                   stringsAsFactors = FALSE)  
+
 Full_table<-keyword_count_df[order(keyword_count_df$Freq, decreasing = TRUE),]
 
 for(i in 2:length(years)){
@@ -53,3 +55,8 @@ names(Full_table)<-name_list
 Full_table<-Full_table
   
 Full_table<-mutate_if(Full_table,is.numeric, funs(replace(., is.na(.), 0)))
+
+#Add total column
+
+Full_table<-Full_table %>%
+mutate(Total = select(., -Keyword) %>% rowSums())
