@@ -50,3 +50,6 @@ name_list[length(name_list)+1]<-years[i]}
 
 names(Full_table)<-name_list
 
+Full_table<-Full_table
+  
+Full_table<-mutate_if(Full_table,is.numeric, funs(replace(., is.na(.), 0)))
