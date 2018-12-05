@@ -1,15 +1,18 @@
-#inputs: Character string for pubmed query
-#output: Dataframe containing uid, title, data published, authors, and keywords for all articles matching the query provided
-
-
+#function: obtain_data
 #dependent packages: rentrez, stringr, rvest
+
+#inputs: 
+##query: Character string for pubmed query
+##full_search: Logical value indicating if obtain_data should obtain data for all results (T) or the first 360 (F)
+
+#output: Dataframe containing uid, title, data published, authors, and keywords for articles matching the query provided
+
 #example usage:
 #query <- "(Biostatistics AND Public Health AND Prostate Cancer AND Drug) AND 2015[PDAT]"
 #data <- obtain_data(query)
 
-obtain_data <- function(query){
-  search <-entrez_search(db = "pubmed",term = query, use_history = T)
-  max <- search$count
+obtain_data <- function(query, full_search = F){
+  max <- ifelse(full_search, entrez_search(db = "pubmed",term = query, use_history = T)$count, 360)
   
   n = 360
   results <- c()
