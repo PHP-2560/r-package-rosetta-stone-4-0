@@ -46,3 +46,5 @@ filtered_data$keywords <- keywords
 
 
 example_load <- as.data.frame(source("example_data/example.txt"), stringsAsFactors = F)[, -8]
+
+names(example_load) <- str_remove(names(example_load), "value.")
