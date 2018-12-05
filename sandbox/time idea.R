@@ -9,4 +9,3 @@ time_elapsed <- function(query){
 
 example <- time_elapsed(query = "health")
 
-obtain_data(query = "health")
