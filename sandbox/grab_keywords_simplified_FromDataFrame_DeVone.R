@@ -1,6 +1,78 @@
+# install.packages("rentrez")
+# install.packages("stringr")
+# install.packages("rvest")
+# install.packages("dplyr")
+
 library(rentrez)
-library(rvest)
 library(stringr)
+library(rvest)
+library(dplyr)
+
+#example to load
+example_load <- as.data.frame(source("example_data/example.txt"), stringsAsFactors = F)[, -6]
+names(example_load) <- str_remove(names(example_load), "value.")
+
+Keylist<-example_load %>%
+select(date,keywords) %>%
+group_by(date)
+
+years<-unique(Keylist$date)
+years <- tolower(years[!is.na(years)])
+
+for(i in 1:length(years)){
+print(years[i])
+  
+Filtered_Keylist<-Keylist %>%
+filter(date==years[i]) %>%
+select(keywords)
+  
+assign(paste("Keywords_",years[i], sep = ""),Filtered_Keylist)
+  
+}
+
+Unlisted<-unlist(paste("Keywords_",years[1], sep = ""))
+keyword_count_df <- as.data.frame(table(Unlisted[Unlisted!=""]), 
+                                  stringsAsFactors = FALSE)  
+Full_table<-keyword_count_df[order(keyword_count_df$Freq, decreasing = TRUE),]
+
+for(i in 2:length(years)){
+
+#assign(paste("Unlisted_Keywords_",years[i], sep = ""),unlist(paste("Keywords_",years[i], sep = "")))
+assign(paste(Unlisted,years[i], sep = ""),unlist(paste("Keywords_",years[i], sep = "")))
+
+keyword_count_df <- as.data.frame(table(Unlisted[Unlisted!=""]), 
+                                    stringsAsFactors = FALSE)  
+
+keyword_table_year <- keyword_count_df[order(keyword_count_df$Freq, decreasing = TRUE),]
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# count frequency of each word, excluding empty strings
+
+
+# sort the table by decreasing Freq
+keyword_count_df <- keyword_count_df[order(keyword_count_df$Freq, decreasing = TRUE),]
+
 
 #Simplified way to grab keywords of all articles from a given pubmed
 
