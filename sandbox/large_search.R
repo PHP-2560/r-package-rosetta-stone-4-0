@@ -1,7 +1,8 @@
 library(rentrez)
 library(stringr)
+library(rvest)
 
-query <- "(Biostatistics AND Public Health AND HIV) AND 2015[PDAT]"
+query <- "(Biostatistics AND Public Health AND Prostate Cancer AND Drug) AND 2015[PDAT]"
 search <-entrez_search(db = "pubmed",term = query, use_history = T)
 max <- search$count
 
@@ -17,9 +18,28 @@ for(seq_start in seq(1,max,n)){
 }
 
 filter_esummary <- function(data){
-  c(data$title,data$elocationid, data$epubdate, paste(data$authors$name, collapse = ", "), data$pmcrefcount)
+  c(data$uid, data$title,data$elocationid, data$epubdate, paste(data$authors$name, collapse = ", "), data$pmcrefcount)
 }
 
-filtered_data <- data.frame(matrix(unlist(lapply(results, filter_esummary)), byrow = T, ncol = 5), stringsAsFactors = F)
-names(filtered_data) <- c("title", "doi", "date", "authors", "pmc_ref_count")
+filtered_data <- data.frame(matrix(unlist(lapply(results, filter_esummary)), byrow = T, ncol = 6), stringsAsFactors = F)
+names(filtered_data) <- c("uid", "title", "doi", "date", "authors", "pmc_ref_count")
 filtered_data$date <- as.numeric(str_remove(filtered_data$date, "[A-z]+.+"))
+
+get_keywords <- function(x){
+  url<-paste("https://www.ncbi.nlm.nih.gov/pubmed/",x, sep="" )
+  
+  #This body of code grabs the keylist
+  results <- read_html(url)
+  papers <- html_nodes(results, ".rprt")
+  keys_html <- html_nodes(papers, ".keywords")
+  
+  keys <- html_text(keys_html) %>%
+    str_remove("KEYWORDS: ") %>%
+    str_split("; ") #Note, fixed for spacing issue
+  keys
+}
+
+keywords <- lapply(filtered_data$uid, get_keywords)
+
+filtered_data$keywords <- keywords
+
