@@ -12,14 +12,14 @@
 #data <- obtain_data(query)
 
 obtain_data <- function(query, full_search = F){
-  max <- ifelse(full_search, entrez_search(db = "pubmed",term = query, use_history = T)$count, 360)
+  search <- entrez_search(db = "pubmed",term = query, use_history = T)
+  max <- ifelse(full_search, search$count, 360)
   
-  n = 360
   results <- c()
-  for(seq_start in seq(1,max,n)){
+  for(seq_start in seq(1,max,360)){
     recs <- entrez_summary(db = "pubmed",
                            term = query, 
-                           retmax=n, 
+                           retmax=360, 
                            retstart=seq_start, 
                            web_history = search$web_history)
     results <- c(results, recs)
