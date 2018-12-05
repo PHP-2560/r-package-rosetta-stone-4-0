@@ -4,7 +4,7 @@ library(dplyr)
 
 lgraph_key <- function(all.keywords) {
 
-  first_year <- names(all.keywords)[4]
+  first_year <- names(all.keywords)[2]
   last_year <- names(all.keywords)[ncol(all.keywords)]
   
   tidy_all.keywords <- all.keywords %>% 
