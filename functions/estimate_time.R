@@ -11,7 +11,7 @@ estimate_time <- function(query){
   hours <- count * 0.7464883 / 60
   print_message <- paste("Search returned",count,"articles. We estimate that your download will take approximatley", as.character(round(hours)), "hours to complete.")
   if (hours > 0.5){
-    print_message <- paste(print_message, " Please consider using the advanced search option at https://www.ncbi.nlm.nih.gov/pubmed/advanced to create a more concise search.")
+    print_message <- paste(print_message, "Please consider using the advanced search option at https://www.ncbi.nlm.nih.gov/pubmed/advanced to create a more concise search.")
   }
   print(print_message)
 }
