@@ -5,7 +5,7 @@ library(dplyr)
 lgraph_key <- function(all.keywords) {
 
   first_year <- names(all.keywords)[2]
-  last_year <- names(all.keywords)[ncol(all.keywords)]
+  last_year <- names(all.keywords)[ncol(all.keywords)-1]
   
   tidy_all.keywords <- all.keywords %>% 
     # reshape the dataframe; each year is not an individual variable now
