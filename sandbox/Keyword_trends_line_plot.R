@@ -2,7 +2,7 @@ library(ggplot2)
 library(tidyr)
 library(dplyr)
 
-Key_trends <- function(all.keywords) {
+lgraph_key <- function(all.keywords) {
 
   first_year <- names(all.keywords)[4]
   last_year <- names(all.keywords)[ncol(all.keywords)]
@@ -31,5 +31,5 @@ Key_trends <- function(all.keywords) {
                          vjust = 0.5))
 }
 
-Key_trends(read.csv("Data/Total_Keywords.csv", stringsAsFactors = F))
+lgraph_key(read.csv("Data/Total_Keywords.csv", stringsAsFactors = F))
 
