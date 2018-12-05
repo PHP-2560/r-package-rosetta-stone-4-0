@@ -142,72 +142,63 @@ structure(list(uid = c("26724841", "26638863", "26620651", "26576711",
 "Jardim DL, de Melo Gagliato D, Falchook G, Zinner R, Wheler JJ, Janku F, Subbiah V, Piha-Paul SA, Fu S, Tannir N, Corn P, Tang C, Hess K, Roy-Chowdhuri S, Kurzrock R, Meric-Bernstam F, Hong DS", 
 "Xu H, Aldrich MC, Chen Q, Liu H, Peterson NB, Dai Q, Levy M, Shah A, Han X, Ruan X, Jiang M, Li Y, Julien JS, Warner J, Friedman C, Roden DM, Denny JC", 
 "Al Nakouzi N, Le Moulec S, Albigès L, Wang C, Beuzeboc P, Gross-Goupil M, de La Motte Rouge T, Guillot A, Gajda D, Massard C, Gleave M, Fizazi K, Loriot Y"
-), pmc_ref_count = c("1", "", "5", "1", "4", "", "12", "3", "2", 
-"6", "8", "4", "3", "6", "11", "179", "47", "4", "22", "64", 
-"1", "7", "6", "9", "6", "2", "395", "1", "4", "28", "5", "13", 
-"5", "4", "7", "5", "1", "4", "25", "12", "2", "9", "7", "5", 
-"80", "3", "4", "8", "2", "1", "11", "24", "6", "47", "26"), 
-    keywords = list(list(c("Lower urinary tract symptoms", "Prostate", 
-    "Prostatic hyperplasia", "Treatment")), list(c("Chemotherapy", 
-    "Hormonal therapy", "Immunotherapy", "Overall survival", 
-    "Prostate cancer")), list(c("Association football", "Bone mineral content (BMC)", 
-    "Bone turnover markers (BTM)", "Exercise intensity", "GPS", 
-    "Prostate cancer")), list(), list(c("Androgen deprivation therapy", 
-    "Bone mineral density", "Bone turnover markers", "Exercise", 
-    "Physical activity", "Sport")), list(c("Androgen deprivation", 
-    "Anti-androgens", "Muscle strength", "Physical activity", 
-    "Physical functioning", "Prostate cancer", "Quality of life"
-    )), list(), list(c("Antioxidants", "Diets", "Oxidative stress", 
-    "PCaP North Carolina-Louisiana Prostate Cancer Project", 
-    "Prostate cancer", "Trx1 thioredoxin 1")), list(c("DNA damage response", 
-    "case-only study", "familial prostate cancer", "genetic susceptibility to prostate cancer", 
-    "whole exome sequencing")), list(), list(), list(), list(
-        "Egg intake: Breast cancer: Ovarian cancer: Prostate cancer: Dose–response meta-analysis: Cohort studies"), 
-        list(c("Adipose tissue", "Metastatic castration resistant prostate cancer", 
-        "Overall survival", "Skeletal muscle loss")), list(c("Abiraterone", 
-        "Cabazitaxel", "Enzalutamide", "Metastatic castration-resistant prostate cancer", 
-        "Taxanes")), list(), list(), list(), list(), list(), 
-        list(c("atrophy", "biopsy", "prostate", "prostate-specific antigen", 
+), keywords = list(list(c("Lower urinary tract symptoms", "Prostate", 
+"Prostatic hyperplasia", "Treatment")), list(c("Chemotherapy", 
+"Hormonal therapy", "Immunotherapy", "Overall survival", "Prostate cancer"
+)), list(c("Association football", "Bone mineral content (BMC)", 
+"Bone turnover markers (BTM)", "Exercise intensity", "GPS", "Prostate cancer"
+)), list(), list(c("Androgen deprivation therapy", "Bone mineral density", 
+"Bone turnover markers", "Exercise", "Physical activity", "Sport"
+)), list(c("Androgen deprivation", "Anti-androgens", "Muscle strength", 
+"Physical activity", "Physical functioning", "Prostate cancer", 
+"Quality of life")), list(), list(c("Antioxidants", "Diets", 
+"Oxidative stress", "PCaP North Carolina-Louisiana Prostate Cancer Project", 
+"Prostate cancer", "Trx1 thioredoxin 1")), list(c("DNA damage response", 
+"case-only study", "familial prostate cancer", "genetic susceptibility to prostate cancer", 
+"whole exome sequencing")), list(), list(), list(), list("Egg intake: Breast cancer: Ovarian cancer: Prostate cancer: Dose–response meta-analysis: Cohort studies"), 
+    list(c("Adipose tissue", "Metastatic castration resistant prostate cancer", 
+    "Overall survival", "Skeletal muscle loss")), list(c("Abiraterone", 
+    "Cabazitaxel", "Enzalutamide", "Metastatic castration-resistant prostate cancer", 
+    "Taxanes")), list(), list(), list(), list(), list(), list(
+        c("atrophy", "biopsy", "prostate", "prostate-specific antigen", 
         "prostatic neoplasms")), list(c("17-(3-pyridyl)-5,16-androstadien-3beta-acetate", 
-        "aged", "drug tolerance", "prostatic neoplasms", "treatment outcome"
-        )), list(), list(c("awareness", "prevention", "public health", 
-        "risk factors", "thrombosis", "venous thromboembolism"
-        )), list(), list(c("Antihypertensive drugs", "Hypertension", 
-        "Prostate cancer")), list(), list(), list(c("abiraterone acetate", 
-        "cardiovascular events", "castration-resistant prostate cancer", 
-        "metabolic syndrome", "survival")), list(), list(), list(), 
-        list(c("ONCOLOGY", "PRIMARY CARE", "STATISTICS & RESEARCH METHODS"
-        )), list(c("bias", "instrumental variable", "survival", 
-        "two-stage predictor substitution", "two-stage residual inclusion", 
-        "unmeasured confounding")), list(c("Androgen deprivation therapy", 
-        "PSA relapse", "Prostate cancer")), list(c("antiandrogens", 
-        "genetics", "hot flashes", "prostatic neoplasms", "quality of life"
-        )), list(c("Androgen suppression", "cardiac risk", "gonadotropin-releasing hormone", 
-        "pharmacoepidemiology")), list(c("CTK7A", "androgen receptor", 
-        "calmodulin", "castration-resistant prostate cancer", 
-        "hydrazinobenzoylcurcumin")), list(), list(c("18F-fluoride PET", 
-        "bone metastases", "dasatinib", "metastatic castration-resistant prostate cancer"
-        )), list(c("Bayesian hierarchical model", "PSA", "change point", 
-        "longitudinal data", "mixture model", "tumor growth profile"
-        )), list(), list(c("Cancer quality register", "Evaluation", 
-        "Prostate cancer", "Validity")), list(c("antiandrogens", 
-        "cardiovascular diseases", "diabetes mellitus", "prostatic neoplasms", 
-        "risk")), list(), list(c("composite likelihood", "correlation", 
-        "multivariate meta-analysis", "pseudolikelihood", "singular estimated covariance matrix problem"
-        )), list(c("decision aids", "patient decision making", 
-        "risk communication", "risk perception")), list(c("Alkaline phosphatase", 
-        "Docetaxel", "Metastatic", "Noncastrate", "Prognostic factors", 
-        "Prostate cancer")), list(c("Brachytherapy", "EPIC", 
-        "Erectile dysfunction", "Prostate cancer", "Tadalafil"
-        )), list(c("Biochemical Recurrence", "Castration-resistant", 
-        "Overall Survival", "Prognosis", "Prostate-specific Antigen Kinetics"
-        )), list(c("CaPSURE", "J-CaP", "androgen-deprivation therapy (ADT)", 
-        "global health", "prostate neoplasms", "risk assessment"
-        )), list(c("Outcome measurement", "Patient-reported", 
-        "Prostate cancer", "Value")), list(c("Bladder cancer", 
-        "MET amplification", "MET mutation", "Prostate cancer", 
-        "Renal cell cancer")), list(c("drug repurposing", "electronic health records", 
-        "metformin", "natural language processing")), list(c("Abiraterone", 
-        "Cabazitaxel", "Metastatic", "Prostate cancer")))), .Names = c("uid", 
-"title", "doi", "date", "authors", "pmc_ref_count", "keywords"
-), row.names = c(NA, -55L), class = "data.frame")
+    "aged", "drug tolerance", "prostatic neoplasms", "treatment outcome"
+    )), list(), list(c("awareness", "prevention", "public health", 
+    "risk factors", "thrombosis", "venous thromboembolism")), 
+    list(), list(c("Antihypertensive drugs", "Hypertension", 
+    "Prostate cancer")), list(), list(), list(c("abiraterone acetate", 
+    "cardiovascular events", "castration-resistant prostate cancer", 
+    "metabolic syndrome", "survival")), list(), list(), list(), 
+    list(c("ONCOLOGY", "PRIMARY CARE", "STATISTICS & RESEARCH METHODS"
+    )), list(c("bias", "instrumental variable", "survival", "two-stage predictor substitution", 
+    "two-stage residual inclusion", "unmeasured confounding")), 
+    list(c("Androgen deprivation therapy", "PSA relapse", "Prostate cancer"
+    )), list(c("antiandrogens", "genetics", "hot flashes", "prostatic neoplasms", 
+    "quality of life")), list(c("Androgen suppression", "cardiac risk", 
+    "gonadotropin-releasing hormone", "pharmacoepidemiology")), 
+    list(c("CTK7A", "androgen receptor", "calmodulin", "castration-resistant prostate cancer", 
+    "hydrazinobenzoylcurcumin")), list(), list(c("18F-fluoride PET", 
+    "bone metastases", "dasatinib", "metastatic castration-resistant prostate cancer"
+    )), list(c("Bayesian hierarchical model", "PSA", "change point", 
+    "longitudinal data", "mixture model", "tumor growth profile"
+    )), list(), list(c("Cancer quality register", "Evaluation", 
+    "Prostate cancer", "Validity")), list(c("antiandrogens", 
+    "cardiovascular diseases", "diabetes mellitus", "prostatic neoplasms", 
+    "risk")), list(), list(c("composite likelihood", "correlation", 
+    "multivariate meta-analysis", "pseudolikelihood", "singular estimated covariance matrix problem"
+    )), list(c("decision aids", "patient decision making", "risk communication", 
+    "risk perception")), list(c("Alkaline phosphatase", "Docetaxel", 
+    "Metastatic", "Noncastrate", "Prognostic factors", "Prostate cancer"
+    )), list(c("Brachytherapy", "EPIC", "Erectile dysfunction", 
+    "Prostate cancer", "Tadalafil")), list(c("Biochemical Recurrence", 
+    "Castration-resistant", "Overall Survival", "Prognosis", 
+    "Prostate-specific Antigen Kinetics")), list(c("CaPSURE", 
+    "J-CaP", "androgen-deprivation therapy (ADT)", "global health", 
+    "prostate neoplasms", "risk assessment")), list(c("Outcome measurement", 
+    "Patient-reported", "Prostate cancer", "Value")), list(c("Bladder cancer", 
+    "MET amplification", "MET mutation", "Prostate cancer", "Renal cell cancer"
+    )), list(c("drug repurposing", "electronic health records", 
+    "metformin", "natural language processing")), list(c("Abiraterone", 
+    "Cabazitaxel", "Metastatic", "Prostate cancer")))), .Names = c("uid", 
+"title", "doi", "date", "authors", "keywords"), row.names = c(NA, 
+-55L), class = "data.frame")
