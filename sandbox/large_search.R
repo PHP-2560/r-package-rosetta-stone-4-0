@@ -43,3 +43,6 @@ keywords <- lapply(filtered_data$uid, get_keywords)
 
 filtered_data$keywords <- keywords
 
+
+
+example_load <- as.data.frame(source("example_data/example.txt"), stringsAsFactors = F)[, -8]
