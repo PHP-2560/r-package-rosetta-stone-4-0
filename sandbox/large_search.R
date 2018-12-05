@@ -18,11 +18,11 @@ for(seq_start in seq(1,max,n)){
 }
 
 filter_esummary <- function(data){
-  c(data$uid, data$title,data$elocationid, data$epubdate, paste(data$authors$name, collapse = ", "))
+  c(data$uid, data$title, data$epubdate, paste(data$authors$name, collapse = ", "))
 }
 
-filtered_data <- data.frame(matrix(unlist(lapply(results, filter_esummary)), byrow = T, ncol = 5), stringsAsFactors = F)
-names(filtered_data) <- c("uid", "title", "doi", "date", "authors")
+filtered_data <- data.frame(matrix(unlist(lapply(results, filter_esummary)), byrow = T, ncol = 4), stringsAsFactors = F)
+names(filtered_data) <- c("uid", "title", "date", "authors")
 filtered_data$date <- as.numeric(str_remove(filtered_data$date, "[A-z]+.+"))
 
 get_keywords <- function(x){
@@ -43,8 +43,9 @@ keywords <- lapply(filtered_data$uid, get_keywords)
 
 filtered_data$keywords <- keywords
 
-
+#save data frame
 dput(filtered_data, file="example_data/example.txt")
-example_load <- as.data.frame(source("example_data/example.txt"), stringsAsFactors = F)[, -7]
 
+#example to load
+example_load <- as.data.frame(source("example_data/example.txt"), stringsAsFactors = F)[, -6]
 names(example_load) <- str_remove(names(example_load), "value.")
