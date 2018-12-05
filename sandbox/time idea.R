@@ -1,8 +1,12 @@
 source("functions/obtain_data.R")
 
 time_elapsed <- function(query){
-  start <- sys.time()
-  obtain_data(query)
-  end <- sys.time()
-  end - start
+  start <- Sys.time()
+  number_articles <- nrow(obtain_data(query))
+  end <- Sys.time()
+  c(number_articles, end - start)
 }
+
+example <- time_elapsed(query = "health")
+
+obtain_data(query = "health")
