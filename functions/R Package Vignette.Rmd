@@ -1,0 +1,81 @@
+---
+title: "PHP2560: pubkey Vignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{pubkey Vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+Team Rosetta Stone 4.0 
+Frank DeVone, Blake Hansen, Nadia Mercado, Kira Raskina 
+
+Due: December 16, 2018 
+
+```{r, echo = FALSE, message = FALSE}
+knitr::opts_chunk$set(collapse = T, comment = "#>") #check formatting and delete if needed
+options(tibble.print_min = 4L, tibble.print_max = 4L) #check formatting and delete if needed
+library(dplyr)
+library(rentrez)
+library(stringr) 
+library(rvest)
+library(ggplot2)
+```
+
+###Introduction to pubkey 
+
+Before starting any research project, some people might find it useful to know certain key information. These hopeful scientists may want to have a quick glance and see what trends are becoming more popular or losing popularity in their field of choice prior to writing a grant application. Others, may be Masters or PhD graduate students that may want to know if their thesis or disertation projects will be useful in the years to come. PubMed is useful for answering these questions but it may not be the most efficient. 
+
+The pubkey package can be an excellent starting point to answer these questions: 
+
+* By gathering the keywords in a search query on PubMed, users can easily track which keywords are most popular for a given a search query
+
+* It can quickly and efficently let users know which keywords are most used overall and by year
+
+* It allows users to visualize keyword trends from a PubMed query to illustrate these trends that is convenient and easy to analyze
+
+This document will introduce pubkey's available user functions, and will demonstrate how quick and easy it is to use these functions for any query. 
+
+## Example Query: Trends in Public Health and Climate Change
+
+To explore the different functions available in pubkey, we'll be using the terms **"public health"** and **"climate change"** as our query and analyze the trends in research using the keywords found on PubMed.
+
+## Functions in pubkey
+
+Pubkey aims to provide each function with a purpose that will assist with analyzing key trends in any given search query in PubMed. 
+
+* 'estimate_time()' or 'key_time()' estimates the time to download their query data frame 
+
+* 'obtain_data()' or 'obtain_key()' generates a data frame with articles generated from the search query with key words
+
+* 'key_data()' generates a data frame with each individual keyword with the freqency by year and total
+
+* 'bgraph_key()' generates a ggplot2 bar graph using the dataframe in 'key_data()' 
+
+* 'lgraph_key()' generates a ggplot2 line graph with   
+
+
+##Estimate download time for each query with 'key_time()' 
+
+'key_time()' allows the user to quickly see an estimated time on how long their query would take to download in our R package.
+
+```{r, eval=FALSE}
+estimate_time("public health AND climate change")
+```
+
+Where the output will look like this: 
+```{r, eval=FALSE}
+[1] "Search returned 15140 articles. We estimate that your download will take approximatley 188 minutes to complete. Please consider using the advanced search option at https://www.ncbi.nlm.nih.gov/pubmed/advanced to create a more concise search."
+```
+
+Hmmm, this might take a lot longer than we would want it to. Let's try to limit our results by adding the search term **"survival"** and limit the years from 2000-2010. 
+
+```{r, eval=FALSE}
+estimate_time("public health AND climate change AND survival AND 2000:2010[PDAT]")
+```
+
+Now the output will look like this: 
+```{r, eval=FALSE}
+[1] "Search returned 423 articles. We estimate that your download will take approximatley 5 minutes to complete."
+```
+
+That's a lot better! We highly suggest that our users take advantage of this function to see if they want to do a broad search or help tailor their query if they are looking for something more specific.  
