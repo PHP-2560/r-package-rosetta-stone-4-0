@@ -59,4 +59,5 @@ Full_table<-mutate_if(Full_table,is.numeric, funs(replace(., is.na(.), 0)))
 #Add total column
 
 Full_table<-Full_table %>%
-mutate(Total = select(., -Keyword) %>% rowSums())
+mutate(Total = select(., -Keyword) %>% rowSums()) %>%
+arrange(desc(Total))
