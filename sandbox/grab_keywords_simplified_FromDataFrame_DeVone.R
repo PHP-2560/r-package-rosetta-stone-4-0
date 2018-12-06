@@ -13,9 +13,13 @@ library(rebus)
 example_load <- as.data.frame(source("example_data/example.txt"), stringsAsFactors = F)[, -6]
 names(example_load) <- str_remove(names(example_load), "value.")
 
+example_load <- my_data
+
 Keylist<-example_load %>%
 select(date,keywords) %>%
-group_by(date)
+group_by(date) %>%
+filter(!is.na(date)) %>%
+arrange(desc(date))
 
 years<-unique(Keylist$date)
 years <- tolower(years[!is.na(years)])
