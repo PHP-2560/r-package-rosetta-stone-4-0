@@ -147,3 +147,6 @@ lgraph_key(climate_table)
 
 **Add useful user instructions here?**
 
+##Comparisons and Concluding Thoughts
+
+The pubkey package is an extension of the exisiting [rentrez package](https://cran.r-project.org/web/packages/rentrez/index.html) available in CRAN. Currently, rentrez is only able to grab values and information stored in PubMed's search options (number of records in the database, PMID, article title, authors, ect.). However, rentrez is unable to pick out details listed for each indivdual object outside of the search results. Our R package, pubkey, is an exercise if being able to webscrape data beyond PubMed's search results and turn this information into an easily digestable table with corresponding and visual graphs.    
