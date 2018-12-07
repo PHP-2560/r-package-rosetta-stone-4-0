@@ -12,6 +12,7 @@ library(ggplot2)
 
 bgraph_key <- function(df, n_values = 10) { #arguments are the sample dataframe (from sum_key) and #values of keywords
 
+  
 df %>%
   select(Keyword, Total) %>% #use select to rename Var1 to Keyword and Freq to Total
   #top_n(n_values) %>% #allows user to pick how many values they want to see from our keyword dataframe
@@ -25,4 +26,4 @@ ggplot(., aes(x = Keyword, y = Total)) + #creates our bar graph using ggplot
   theme(axis.line = element_line(color = 'black'))
 }
 
-bgraph_key(Full_table, 5)
+bgraph_key(Full_table)
