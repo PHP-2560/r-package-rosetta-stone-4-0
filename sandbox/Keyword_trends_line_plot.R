@@ -2,7 +2,7 @@ library(ggplot2)
 library(tidyr)
 library(dplyr)
 
-lgraph_key <- function(all.keywords) {
+lgraph_key <- function(all.keywords, n=10) {
 
   first_year <- names(all.keywords)[2]
   last_year <- names(all.keywords)[ncol(all.keywords)-1]
@@ -15,7 +15,7 @@ lgraph_key <- function(all.keywords) {
     # change NAs to zeros
     mutate_if(is.numeric, funs(replace(., is.na(.), 0)))  
     
-  ggplot(tidy_all.keywords, aes(x = gsub("[^0-9\\.]", "", Year), y = times_used, group=1, col=Keyword)) + 
+  ggplot(tidy_all.keywords[1:n,], aes(x = gsub("[^0-9\\.]", "", Year), y = times_used, group=1, col=Keyword)) + 
     xlab("Year") +
     ylab("Times used") +
     # make facets by keyword  
@@ -31,5 +31,4 @@ lgraph_key <- function(all.keywords) {
                          vjust = 0.5))
 }
 
-lgraph_key(read.csv("Data/Total_Keywords.csv", stringsAsFactors = F))
-
+#lgraph_key(read.csv("Data/Total_Keywords.csv", stringsAsFactors = F))
