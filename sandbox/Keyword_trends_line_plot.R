@@ -2,12 +2,13 @@ library(ggplot2)
 library(tidyr)
 library(dplyr)
 
+# n is the number of top keywords for which we want to see trends
 lgraph_key <- function(all.keywords, n=10) {
 
-  first_year <- names(all.keywords)[2]
-  last_year <- names(all.keywords)[ncol(all.keywords)-1]
+  first_year <- names(all.keywords)[2] # first year column
+  last_year <- names(all.keywords)[ncol(all.keywords)-1] #all year columns except "Total"
   
-  tidy_all.keywords <- all.keywords %>% 
+  tidy_all.keywords <- all.keywords[1:n,] %>% 
     # reshape the dataframe; each year is not an individual variable now
     gather(Year, times_used, first_year:last_year) %>%                   
     # select only the columns we need to build a graph
@@ -15,7 +16,7 @@ lgraph_key <- function(all.keywords, n=10) {
     # change NAs to zeros
     mutate_if(is.numeric, funs(replace(., is.na(.), 0)))  
     
-  ggplot(tidy_all.keywords[1:n,], aes(x = gsub("[^0-9\\.]", "", Year), y = times_used, group=1, col=Keyword)) + 
+  ggplot(tidy_all.keywords, aes(x = gsub("[^0-9\\.]", "", Year), y = times_used, group=1, col=Keyword)) + 
     xlab("Year") +
     ylab("Times used") +
     # make facets by keyword  
