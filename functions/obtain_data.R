@@ -26,7 +26,7 @@ obtain_data <- function(query, full_search = F){
   }
   
   filter_esummary <- function(data){
-    c(data$uid, data$title, data$epubdate, paste(data$authors$name, collapse = ", "))
+    c(data$uid, data$title, data$pubdate, paste(data$authors$name, collapse = ", "))
   }
   
   filtered_data <- data.frame(matrix(unlist(lapply(results, filter_esummary)), byrow = T, ncol = 4), stringsAsFactors = F)
