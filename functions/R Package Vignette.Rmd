@@ -94,6 +94,8 @@ The sample output will look something like is this:
 
 A few important points to note here: 
 
+* save the command to a variable in order to be able to see the results and use our other functions
+
 * Not every article will have keywords (in fact, the majority of articles will not)
 
 * We have included a default argument, 'full_search = FALSE'. This is a default threshold where the query will only pull from the first 360 articles to make the function faster and should only be used if the user wants a rough estimate of the keywords in a certain query. If the user wants to have all the possible articles that result from a query, set the argument to 'full_search = TRUE'. 
