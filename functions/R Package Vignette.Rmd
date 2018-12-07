@@ -15,6 +15,7 @@ Due: December 16, 2018
 knitr::opts_chunk$set(collapse = T, comment = "#>") #check formatting and delete if needed
 options(tibble.print_min = 4L, tibble.print_max = 4L) #check formatting and delete if needed
 library(dplyr)
+library(tidyr)
 library(rentrez)
 library(stringr) 
 library(rvest)
@@ -23,7 +24,7 @@ library(ggplot2)
 
 ###Introduction to pubkey 
 
-Before starting any research project, some people might find it useful to know certain key information. These hopeful scientists may want to have a quick glance and see what trends are becoming more popular or losing popularity in their field of choice prior to writing a grant application. Others, may be Masters or PhD graduate students that may want to know if their thesis or disertation projects will be useful in the years to come. PubMed is useful for answering these questions but it may not be the most efficient. 
+Before starting any research project, some people might find it useful to know certain key information. These hopeful scientists may want to have a quick glance and see what trends are becoming more popular or losing popularity in their field of choice prior to writing a grant application. Others, may be Masters or PhD graduate students that may want to know if their thesis or disertation projects will be useful in the years to come. PubMed can be helpful for answering these questions but it may not be the most efficient. 
 
 The pubkey package can be an excellent starting point to answer these questions: 
 
@@ -51,12 +52,12 @@ Pubkey aims to provide each function with a purpose that will assist with analyz
 
 * 'bgraph_key()' generates a ggplot2 bar graph using the dataframe in 'key_data()' 
 
-* 'lgraph_key()' generates a ggplot2 line graph with   
+* 'lgraph_key()' generates a ggplot2 line graph with individual facets for each keyword using the dataframe in 'key_data()'  
 
 
 ##Estimate download time for each query with 'key_time()' 
 
-'key_time()' allows the user to quickly see an estimated time on how long their query would take to download in our R package.
+'key_time()' allows the user to quickly see an estimated time on how long their query would take to download using our R package.
 
 ```{r, eval=FALSE}
 estimate_time("public health AND climate change")
@@ -79,3 +80,68 @@ Now the output will look like this:
 ```
 
 That's a lot better! We highly suggest that our users take advantage of this function to see if they want to do a broad search or help tailor their query if they are looking for something more specific.  
+
+##Gather keywords from articles in a PubMed query using 'obtain_key()'
+
+'obtain_key()' creates a data frame with the PMID, title, date published, authors, and keywords for the articles matching the query provided. Using our previous query: 
+
+```{r, eval=FALSE}
+my_data <- obtain_data("public health AND climate change AND survival AND 2000:2010[PDAT]", full_search = T)
+```
+
+The sample output will look something like is this: 
+![](C:/Users/nmerc/Desktop/sample_mydata_r.png)
+
+A few important points to note here: 
+
+* Not every article will have keywords (in fact, the majority of articles will not)
+
+* We have included a default argument, 'full_search = FALSE'. This is a default threshold where the query will only pull from the first 360 articles to make the function faster and should only be used if the user wants a rough estimate of the keywords in a certain query. If the user wants to have all the possible articles that result from a query, set the argument to 'full_search = TRUE'. 
+
+* The results do not return a user-friendly table, but we have another function that can help with that!
+
+##Generate a quick and easy-to-read table using 'key_data()'
+
+'key_data()' creates a user-friendly table with each of the keywords resulting from the query and lists the count for each by year and the total. It is important to note that the user must run the function 'obtain_key()' first and save the resulting data frame in order to use 'key_data()'.
+
+```{r, eval = FALSE}
+complete_table <- key_data(my_data)
+```
+
+The results should generate a table that looks like this: 
+
+*add image of table here?
+
+Much better and easier to read right? For fun, the pubkey R package also includes built-in functions to visualize these results which may be useful to the user. 
+
+##Generate a simple bar graph to analyze keywords using 'bgraph_key()'
+
+Besides analyzing the data frame generated using 'key_data()', the user may also only be interested in seeing the top 5 keywords for their query. 'bgraph_key()' is a quick function that will help the user do this: 
+
+```{r, eval=FALSE}
+bgraph_key(complete_table, 5)
+```
+
+
+*graph generated will appear here?
+
+Here are a few helpful tips for using the 'bgraph_key()' function: 
+
+* the user must run the function 'key_data()' first and save the resulting data frame prior to using the 'bgraph_key()' function
+
+* try to limit the number of keyterms to less than 30, any more and the table will look a little clustered and lose its utility
+
+* the default number of keywords that will be graphed is 10, the user must specify the number of keywords if this number desired is different
+
+##Generate a line graph to analyze change in keyword trends with 'lgraph_key()'
+
+'lgraph_key()' allows the user to efficiently check how keyword trends changed over time by creating line graphs with facets.
+
+```{r, eval=FALSE}
+lgraph_key(complete_table)
+```
+
+*fancy line graph here?
+
+**Add useful user instructions here?**
+
