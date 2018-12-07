@@ -44,9 +44,9 @@ To explore the different functions available in pubkey, we'll be using the terms
 
 Pubkey aims to provide each function with a purpose that will assist with analyzing key trends in any given search query in PubMed. 
 
-* 'estimate_time()' or 'key_time()' estimates the time to download their query data frame 
+* 'estimate_time()' or 'key_time()' or 'pub_time()' estimates the time to download their query data frame 
 
-* 'obtain_data()' or 'obtain_key()' generates a data frame with articles generated from the search query with key words
+* 'obtain_data()' or 'obtain_key()' or 'get_pubkey()' generates a data frame with articles generated from the search query with key words
 
 * 'key_data()' generates a data frame with each individual keyword with the freqency by year and total
 
@@ -105,12 +105,12 @@ A few important points to note here:
 'key_data()' creates a user-friendly table with each of the keywords resulting from the query and lists the count for each by year and the total. It is important to note that the user must run the function 'obtain_key()' first and save the resulting data frame in order to use 'key_data()'.
 
 ```{r, eval = FALSE}
-complete_table <- key_data(my_data)
+climate_table <- key_data(my_data)
 ```
 
 The results should generate a table that looks like this: 
 
-*add image of table here?
+![](C:/Users/nmerc/Desktop/sample_final table_r.png)
 
 Much better and easier to read right? For fun, the pubkey R package also includes built-in functions to visualize these results which may be useful to the user. 
 
@@ -119,11 +119,13 @@ Much better and easier to read right? For fun, the pubkey R package also include
 Besides analyzing the data frame generated using 'key_data()', the user may also only be interested in seeing the top 5 keywords for their query. 'bgraph_key()' is a quick function that will help the user do this: 
 
 ```{r, eval=FALSE}
-bgraph_key(complete_table, 5)
+bgraph_key(Full_table, 5)
 ```
 
+Where the output should look roughly like this:
 
-*graph generated will appear here?
+![](C:/Users/nmerc/Desktop/sample_bar graph_r.png)
+
 
 Here are a few helpful tips for using the 'bgraph_key()' function: 
 
@@ -133,12 +135,12 @@ Here are a few helpful tips for using the 'bgraph_key()' function:
 
 * the default number of keywords that will be graphed is 10, the user must specify the number of keywords if this number desired is different
 
-##Generate a line graph to analyze change in keyword trends with 'lgraph_key()'
+##Generate a line graph to analyze keyword trends with 'lgraph_key()'
 
 'lgraph_key()' allows the user to efficiently check how keyword trends changed over time by creating line graphs with facets.
 
 ```{r, eval=FALSE}
-lgraph_key(complete_table)
+lgraph_key(climate_table)
 ```
 
 *fancy line graph here?
