@@ -1,8 +1,6 @@
 Key_table<- function(data){
 
-example_load <- data
-
-Keylist<-example_load %>%
+Keylist<-data %>%
   select(date,keywords) %>%
   group_by(date) %>%
   filter(!is.na(date)) %>%
@@ -17,7 +15,6 @@ TableTracker<-1
 NamesTracker<-1
 #For making our final table
 
-keyword_count_df <- as.data.frame(NULL)
 
 
 for(i in 1:length(years)){
@@ -61,7 +58,7 @@ for(i in 1:length(years)){
       
       Full_table <- full_join(Full_table,empty, by = "Var1")
       
-    }else{
+    }else{#If it's not empty add the correctly built table to our current one
       Full_table <- full_join(Full_table,To_Join, by = "Var1")
     }
     
