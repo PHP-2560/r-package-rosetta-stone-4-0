@@ -19,7 +19,7 @@ df %>%
   slice(1:n_values) %>% #allows user to pick by number of terms instead of values
     
 ggplot(., aes(x = Keyword, y = Total)) + #creates our bar graph using ggplot
-  geom_bar(stat = "identity", fill = "#33CCCC") + #stat = identity because values are given
+  geom_bar(stat = "identity", fill = "#336699") + #stat = identity because values are given
   theme(axis.ticks = element_blank())+
   coord_flip() + #inverts the x and y axis to allow for more keywords to be visible in the bar graph
   theme_minimal() + 
