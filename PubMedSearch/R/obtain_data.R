@@ -21,8 +21,7 @@ obtain_data <- function(query, full_search = F){
                            term = query, 
                            retmax=360, 
                            retstart=seq_start, 
-                           web_history = search$web_history,
-                           always_return_list = T)
+                           web_history = search$web_history)
     results <- c(results, recs)
   }
   
