@@ -1,0 +1,11 @@
+Do:
+
+install.packages(c("devtools", "roxygen2", "testthat", "knitr"))
+
+Then:
+
+devtools::install_github("r-lib/devtools")
+
+Install most recent file at:
+
+https://cran.rstudio.com/bin/windows/Rtools/
