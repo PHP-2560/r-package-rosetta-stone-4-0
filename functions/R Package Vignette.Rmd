@@ -94,9 +94,9 @@ The sample output will look something like is this:
 
 A few important points to note here: 
 
-* save the command to a variable in order to be able to see the results and use our other functions
+* Save the command to a variable in order to be able to see the results and use our other functions.
 
-* Not every article will have keywords (in fact, the majority of articles will not)
+* Not every article will have keywords (in fact, the majority of articles will not).
 
 * We have included a default argument, 'full_search = FALSE'. This is a default threshold where the query will only pull from the first 360 articles to make the function faster and should only be used if the user wants a rough estimate of the keywords in a certain query. If the user wants to have all the possible articles that result from a query, set the argument to 'full_search = TRUE'. 
 
@@ -114,7 +114,7 @@ The results should generate a table that looks like this:
 
 ![](C:/Users/nmerc/Desktop/sample_final table_r.png)
 
-Much better and easier to read right? For fun, the pubkey R package also includes built-in functions to visualize these results which may be useful to the user. 
+Much better and easier to read right? For fun, the pubkey R package also includes built-in functions to visualize these results This table is makes the information easier to digest and may be useful to the user. 
 
 ##Generate a simple bar graph to analyze keywords using 'bgraph_key()'
 
@@ -131,24 +131,32 @@ Where the output should look roughly like this:
 
 Here are a few helpful tips for using the 'bgraph_key()' function: 
 
-* the user must run the function 'key_data()' first and save the resulting data frame prior to using the 'bgraph_key()' function
+* The user must run the function 'key_data()' first and save the resulting data frame prior to using the 'bgraph_key()' function.
 
-* try to limit the number of keyterms to less than 30, any more and the table will look a little clustered and lose its utility
+* Try to limit the number of keyterms to less than 30, any more and the table will look a little clustered and lose its utility.
 
-* the default number of keywords that will be graphed is 10, the user must specify the number of keywords if this number desired is different
+* The default number of keywords that will be graphed is 10, the user must specify the number of keywords if this number desired is different.
 
 ##Generate a line graph to analyze keyword trends with 'lgraph_key()'
 
 'lgraph_key()' allows the user to efficiently check how keyword trends changed over time by creating line graphs with facets.
 
 ```{r, eval=FALSE}
-lgraph_key(climate_table)
+lgraph_key(climate_table, 6)
 ```
 
-*fancy line graph here?
+![](C:/Users/nmerc/Desktop/sample_line graph_r.png)
 
-**Add useful user instructions here?**
+We can quickly see that the keywords **"climate change"** and **"mortality"** are on the rise in public health research articles related to climate change. 
+
+Here are a few helpful tips for using the 'lgraph_key()' function: 
+
+* Similar to the 'bgraph_key()' function, the user must run the function 'key_data()' first and save the resulting data frame prior to using 'lgraph_key()'. 
+
+* Unlike the 'bgraph_key()' function, there is no recommended limit to the number of key terms a user should plot, however, the line graphs may become clustered and diffucult to read if the user has a significant number of years in the search or plots a significant number of keywords.
+
+* The default number of keywords that will be graphed is 10, the user must specify the number of keywords if this number desired is different.
 
 ##Comparisons and Concluding Thoughts
 
-The pubkey package is an extension of the exisiting [rentrez package](https://cran.r-project.org/web/packages/rentrez/index.html) available in CRAN. Currently, rentrez is only able to grab values and information stored in PubMed's search options (number of records in the database, PMID, article title, authors, ect.). However, rentrez is unable to pick out details listed for each indivdual object outside of the search results. Our R package, pubkey, is an exercise if being able to webscrape data beyond PubMed's search results and turn this information into an easily digestable table with corresponding and visual graphs.    
+The pubkey package is an extension of the exisiting [rentrez package](https://cran.r-project.org/web/packages/rentrez/index.html) available in CRAN. Currently, rentrez is only able to grab values and information stored in PubMed's search options (number of records in the database, PMID, article title, authors, ect.). However, rentrez is unable to pick out details listed for each indivdual object outside of the search results. Our R package, pubkey, is an exercise if being able to webscrape data beyond PubMed's search results and turn this information into an easily digestable table with corresponding visual graphs.    
