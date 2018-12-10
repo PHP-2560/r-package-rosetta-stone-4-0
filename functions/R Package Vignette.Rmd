@@ -44,23 +44,23 @@ To explore the different functions available in pubkey, we'll be using the terms
 
 Pubkey aims to provide each function with a purpose that will assist with analyzing key trends in any given search query in PubMed. 
 
-* 'estimate_time()' or 'key_time()' or 'pub_time()' estimates the time to download their query data frame 
+* 'key_estimate_time()' estimates the time to download their query data frame 
 
-* 'obtain_data()' or 'obtain_key()' or 'get_pubkey()' generates a data frame with articles generated from the search query with key words
+* 'key_download()' generates a data frame with articles generated from the search query with key words
 
-* 'key_data()' generates a data frame with each individual keyword with the freqency by year and total
+* 'key_summary()' generates a data frame with each individual keyword with the freqency by year and total
 
-* 'bgraph_key()' generates a ggplot2 bar graph using the dataframe in 'key_data()' 
+* 'key_bgraph()' generates a ggplot2 bar graph using the dataframe in 'key_data()' 
 
-* 'lgraph_key()' generates a ggplot2 line graph with individual facets for each keyword using the dataframe in 'key_data()'  
+* 'key_lgraph()' generates a ggplot2 line graph with individual facets for each keyword using the dataframe in 'key_summary()'  
 
 
-##Estimate download time for each query with 'key_time()' 
+##Estimate download time for each query with 'key_estimate_time()' 
 
-'key_time()' allows the user to quickly see an estimated time on how long their query would take to download using our R package.
+'key_estimate_time()' allows the user to quickly see an estimated time on how long their query would take to download using our R package.
 
 ```{r, eval=FALSE}
-estimate_time("public health AND climate change")
+key_estimate_time("public health AND climate change")
 ```
 
 Where the output will look like this: 
@@ -71,7 +71,7 @@ Where the output will look like this:
 Hmmm, this might take a lot longer than we would want it to. Let's try to limit our results by adding the search term **"survival"** and limit the years from 2000-2010. 
 
 ```{r, eval=FALSE}
-estimate_time("public health AND climate change AND survival AND 2000:2010[PDAT]")
+key_estimate_time("public health AND climate change AND survival AND 2000:2010[PDAT]")
 ```
 
 Now the output will look like this: 
@@ -81,16 +81,16 @@ Now the output will look like this:
 
 That's a lot better! We highly suggest that our users take advantage of this function to see if they want to do a broad search or help tailor their query if they are looking for something more specific.  
 
-##Gather keywords from articles in a PubMed query using 'obtain_key()'
+##Gather keywords from articles in a PubMed query using 'key_download()'
 
-'obtain_key()' creates a data frame with the PMID, title, date published, authors, and keywords for the articles matching the query provided. Using our previous query: 
+'key_download()' creates a data frame with the PMID, title, date published, authors, and keywords for the articles matching the query provided. Using our previous query: 
 
 ```{r, eval=FALSE}
-my_data <- obtain_data("public health AND climate change AND survival AND 2000:2010[PDAT]", full_search = T)
+my_data <- key_download("public health AND climate change AND survival AND 2000:2010[PDAT]", full_search = T)
 ```
 
 The sample output will look something like is this: 
-![](C:/Users/nmerc/Desktop/sample_mydata_r.png)
+![](../example_data/sample_mydata_r.png)
 
 A few important points to note here: 
 
@@ -102,58 +102,58 @@ A few important points to note here:
 
 * The results do not return a user-friendly table, but we have another function that can help with that!
 
-##Generate a quick and easy-to-read table using 'key_data()'
+##Generate a quick and easy-to-read table using 'key_summary()'
 
-'key_data()' creates a user-friendly table with each of the keywords resulting from the query and lists the count for each by year and the total. It is important to note that the user must run the function 'obtain_key()' first and save the resulting data frame in order to use 'key_data()'.
+'key_summary()' creates a user-friendly table with each of the keywords resulting from the query and lists the count for each by year and the total. It is important to note that the user must run the function 'key_download()' first and save the resulting data frame in order to use 'key_summary()'.
 
 ```{r, eval = FALSE}
-climate_table <- key_data(my_data)
+climate_table <- key_summary(my_data)
 ```
 
 The results should generate a table that looks like this: 
 
-![](C:/Users/nmerc/Desktop/sample_final table_r.png)
+![](../example_data/sample_final\ table_r.png)
 
 Much better and easier to read right? For fun, the pubkey R package also includes built-in functions to visualize these results This table is makes the information easier to digest and may be useful to the user. 
 
-##Generate a simple bar graph to analyze keywords using 'bgraph_key()'
+##Generate a simple bar graph to analyze keywords using 'key_bgraph()'
 
-Besides analyzing the data frame generated using 'key_data()', the user may also only be interested in seeing the top 5 keywords for their query. 'bgraph_key()' is a quick function that will help the user do this: 
+Besides analyzing the data frame generated using 'key_summary()', the user may also only be interested in seeing the top 5 keywords for their query. 'key_bgraph()' is a quick function that will help the user do this: 
 
 ```{r, eval=FALSE}
-bgraph_key(Full_table, 5)
+key_bgraph(Full_table, 5)
 ```
 
 Where the output should look roughly like this:
 
-![](C:/Users/nmerc/Desktop/sample_bar graph_r.png)
+![](../example_data/sample_bar graph_r.png)
 
 
-Here are a few helpful tips for using the 'bgraph_key()' function: 
+Here are a few helpful tips for using the 'key_bgraph()' function: 
 
-* The user must run the function 'key_data()' first and save the resulting data frame prior to using the 'bgraph_key()' function.
+* The user must run the function 'key_summary()' first and save the resulting data frame prior to using the 'key_bgraph()' function.
 
 * Try to limit the number of keyterms to less than 30, any more and the table will look a little clustered and lose its utility.
 
 * The default number of keywords that will be graphed is 10, the user must specify the number of keywords if this number desired is different.
 
-##Generate a line graph to analyze keyword trends with 'lgraph_key()'
+##Generate a line graph to analyze keyword trends with 'key_lgraph()'
 
-'lgraph_key()' allows the user to efficiently check how keyword trends changed over time by creating line graphs with facets.
+'key_lgraph()' allows the user to efficiently check how keyword trends changed over time by creating line graphs with facets.
 
 ```{r, eval=FALSE}
-lgraph_key(climate_table, 6)
+key_lgraph(climate_table, 6)
 ```
 
-![](C:/Users/nmerc/Desktop/sample_line graph_r.png)
+![](../example_data/sample_line graph_r.png)
 
 We can quickly see that the keywords **"climate change"** and **"mortality"** are on the rise in public health research articles related to climate change. 
 
-Here are a few helpful tips for using the 'lgraph_key()' function: 
+Here are a few helpful tips for using the 'key_lgraph()' function: 
 
-* Similar to the 'bgraph_key()' function, the user must run the function 'key_data()' first and save the resulting data frame prior to using 'lgraph_key()'. 
+* Similar to the 'key_bgraph()' function, the user must run the function 'key_summary()' first and save the resulting data frame prior to using 'key_lgraph()'. 
 
-* Unlike the 'bgraph_key()' function, there is no recommended limit to the number of key terms a user should plot, however, the line graphs may become clustered and diffucult to read if the user has a significant number of years in the search or plots a significant number of keywords.
+* Unlike the 'key_bgraph()' function, there is no recommended limit to the number of key terms a user should plot, however, the line graphs may become clustered and diffucult to read if the user has a significant number of years in the search or plots a significant number of keywords.
 
 * The default number of keywords that will be graphed is 10, the user must specify the number of keywords if this number desired is different.
 
