@@ -9,3 +9,12 @@ devtools::install_github("r-lib/devtools")
 Install most recent file at:
 
 https://cran.rstudio.com/bin/windows/Rtools/
+
+Navigate to the project "PubMedSearch.Rproj" and open it
+
+On the top of Rstudio click Build
+
+Click 'install and restart'
+
+This should load the Rpackage locally
+
