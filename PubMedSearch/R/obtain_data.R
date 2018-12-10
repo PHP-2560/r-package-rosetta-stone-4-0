@@ -20,7 +20,7 @@ obtain_data <- function(query, full_search = F){
     recs <- entrez_summary(db = "pubmed",
                            term = query, 
                            retmax=360, 
-                           retstart=seq_start, 
+                           retstart=seq_start - 1, 
                            web_history = search$web_history,
                            always_return_list = T)
     results <- c(results, recs)
