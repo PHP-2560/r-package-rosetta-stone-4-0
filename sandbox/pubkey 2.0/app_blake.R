@@ -1,10 +1,13 @@
 library(shiny)
 library(shinydashboard)
-library(rentrez)
+
+library(dplyr)
 library(stringr)
 library(rvest)
-library(pubkey)
+library(rebus)
 
+library(pubkey)
+library(rentrez)
 
 ui <- dashboardPage(
   dashboardHeader(
@@ -26,8 +29,9 @@ ui <- dashboardPage(
     tabItems(
       tabItem("Instructions", h1("How to use PubKey")),
       tabItem("Estimate_Time", h1("Please use the below function to estimate the time it will take to complete your query"), 
-              textInput("Search_Term", label="Enter search term"), textOutput("time_estimate")),
-      tabItem("Search_PubMed", h1("key_download()"), htmlOutput("PubSearch")),
+              textInput("example_Search_Term", label="Enter search term"), textOutput("time_estimate")),
+      tabItem("Search_PubMed", h1("key_download()"), textInput("Search_Term", label="Enter search term"), htmlOutput("PubSearch"),
+              dataTableOutput("raw_data")),
       tabItem("data_table", h1("key_summary()")),
       tabItem("keyword_bar_graph", h1("key_bgraph()")),
       tabItem("keyword_trends_line_graph", h1("key_lgraph()"))
@@ -46,7 +50,10 @@ server <- function(input, output) {
   output$PubSearch <-renderUI({
     getPage()
   })
-  output$time_estimate <- renderText({key_estimate_time(input$Search_Term)})
+  
+  output$time_estimate <- renderText({key_estimate_time(input$example_Search_Term)})
+  
+  output$raw_data <- renderDataTable({key_download(input$Search_Term)})
 }
 
 shinyApp(ui,server)
