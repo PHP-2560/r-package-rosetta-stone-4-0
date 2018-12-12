@@ -13,5 +13,5 @@ key_estimate_time <- function(query){
   if (hours > 30){
     print_message <- paste(print_message, "Please consider using the advanced search option at https://www.ncbi.nlm.nih.gov/pubmed/advanced to create a more concise search.")
   }
-  print(print_message)
+  print_message
 }
