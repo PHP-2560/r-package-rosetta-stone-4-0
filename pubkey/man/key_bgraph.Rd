@@ -1,11 +1,11 @@
-\name{bgraph_key}
-\alias{bgraph_key}
+\name{key_bgraph}
+\alias{key_bgraph}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{Test
+\title{key_bgraph
 %%  ~~function to do ... ~~
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Returns a bar graph of the top n keywords from a previous query, where n is provided by the users
 }
 \usage{
 bgraph_key(df, n_values = 10)
@@ -13,10 +13,10 @@ bgraph_key(df, n_values = 10)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{df}{
-%%     ~~Describe \code{df} here~~
+This is the data frame output of key_summary
 }
   \item{n_values}{
-%%     ~~Describe \code{n_values} here~~
+This is the number of unique keywords the user wants to view, the default value is
 }
 }
 \details{
