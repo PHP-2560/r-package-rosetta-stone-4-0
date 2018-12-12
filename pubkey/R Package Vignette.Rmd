@@ -15,13 +15,27 @@ Due: December 16, 2018
 knitr::opts_chunk$set(collapse = T, comment = "#>") #check formatting and delete if needed
 options(tibble.print_min = 4L, tibble.print_max = 4L) #check formatting and delete if needed
 #Required packages
-library(dplyr)
-library(tidyr)
-library(rentrez)
-library(stringr) 
-library(rvest)
-library(ggplot2)
-library(rebus)
+
+names<-c("dplyr","tidyr","rentrez","stringr","rvest","ggplot2","rebus")
+
+
+for(name in names){
+        if (!(name %in% installed.packages())){
+           # install.packages(name, repos="http://cran.us.r-project.org",quiet=TRUE,dependencies=TRUE) #if package not installed, install the package
+        print("here")
+    	 install.packages(name, repos="http://cran.us.r-project.org",quiet=TRUE,dependencies=FALSE)} #if package not installed, install the package
+        library(name, character.only=TRUE,warn.conflicts=FALSE,quietly=TRUE)
+  
+}
+
+
+#library(dplyr)
+#library(tidyr)
+#library(rentrez)
+#library(stringr) 
+#library(rvest)
+#library(ggplot2)
+#library(rebus)
 ```
 
 ###Introduction to pubkey 
