@@ -30,7 +30,10 @@ ui <- dashboardPage(
       tabItem("Instructions", h1("How to use PubKey")),
       tabItem("Estimate_Time", h1("Please use the below function to estimate the time it will take to complete your query"), 
               textInput("example_Search_Term", label="Enter search term"), textOutput("time_estimate")),
-      tabItem("Search_PubMed", h1("key_download()"), textInput("Search_Term", label="Enter search term"), htmlOutput("PubSearch"),
+      tabItem("Search_PubMed", h1("key_download()"), textInput("Search_Term", label="Enter search term"),tags$iframe(src = "https://www.ncbi.nlm.nih.gov/pubmed/advanced", 
+                                                                                                                     style="width:100%;",  frameborder="0",
+                                                                                                                     id="iframe",
+                                                                                                                     height = "600px"),
               dataTableOutput("raw_data")),
       tabItem("data_table", h1("key_summary()"),dataTableOutput("data")),
       tabItem("keyword_bar_graph", h1("key_bgraph()")),
@@ -41,15 +44,7 @@ ui <- dashboardPage(
 
 
 server <- function(input, output) {
-  getPage<-function() {
-    return(tags$iframe(src = "https://www.ncbi.nlm.nih.gov/pubmed/advanced", 
-                       style="width:100%;",  frameborder="0",
-                       id="iframe",
-                       height = "600px"))
-  }
-  output$PubSearch <-renderUI({
-    getPage()
-  })
+ 
   
   output$time_estimate <- renderText({key_estimate_time(input$example_Search_Term)})
   
