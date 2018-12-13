@@ -27,9 +27,16 @@ ui <- dashboardPage(
   
   dashboardBody(
     tabItems(
-      tabItem("Instructions", h1("How to use PubKey")),
-      tabItem("Estimate_Time", h1("Estimate the time it will take to complete your query"), 
+      tabItem("Instructions", h1("How To Use PubKey"),
+              br(),
+              h3("What is PubKey?"), 
+              br(),
+              h3("How to Start Your Search")),
+      tabItem("Estimate_Time", h1("Estimate Query Time"), 
+              br(),
               textInput("example_Search_Term", label="Enter search term"), 
+              submitButton("Update Search", icon("refresh")),
+              helpText("When you click the button above, you should see the estimated time it will take to download your current search query."),
               textOutput("time_estimate")),
       tabItem("Search_PubMed", h1("Download your initial dataframe"), 
               textInput("Search_Term", label="Enter search term"),
@@ -57,10 +64,11 @@ server <- function(input, output) {
   output$PubSearch <-renderUI({
     getPage()
   })
-  
+    
   output$time_estimate <- renderText({key_estimate_time(input$example_Search_Term)})
   
   output$raw_data <- renderDataTable({key_download(input$Search_Term)})
 }
+
 
 shinyApp(ui,server)
