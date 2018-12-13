@@ -30,7 +30,7 @@ ui <- dashboardPage(
 
 #Introduction tab
       tabItem("Instructions", h1("How To Use PubKey"),
-              
+              uiOutput("video"),
               h3("What is PubKey?"), 
               p("PubKey is an R Package created to quickly and efficently gather and analyze keyword trends from any search query on Pubmed. Pubkey works by creating an initial dataframe by taking any search query and webscraping PubMed to gather important information and the keywords from each article in the query." ),
               h3("How to Start Your Search"),
@@ -76,6 +76,11 @@ ui <- dashboardPage(
 
 
 server <- function(input, output) {
+  output$video <- renderUI({
+    HTML(paste0('<iframe width="560" height="315" src="https://www.youtube.com/embed/3DA-NzV1BWE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'))
+    })
+  
+  
   getPage<-function() {
     return(tags$iframe(src = "https://www.ncbi.nlm.nih.gov/pubmed/advanced", 
                        style="width:100%;",  frameborder="0",
