@@ -27,27 +27,35 @@ ui <- dashboardPage(
   
   dashboardBody(
     tabItems(
+
+#Introduction tab
       tabItem("Instructions", h1("How To Use PubKey"),
               br(),
               h3("What is PubKey?"), 
-              br(),
-              h3("How to Start Your Search")),
+              p("PubKey is an R Package created to quickly and efficently gather and analyze keyword trends from any search query on Pubmed." ),
+              h3("How to Start Your Search"),
+              p("We highly suggest that our users start with the `Estimate Time` tab. Some search queries will take longer than others.")
+              ),
+      
+#Estimate time tab
       tabItem("Estimate_Time", h1("Estimate Query Time"), 
               br(),
               textInput("example_Search_Term", label="Enter search term"), 
               submitButton("Update Search", icon("refresh")),
               helpText("When you click the button above, you should see the estimated time it will take to download your current search query."),
               textOutput("time_estimate")),
-      tabItem("Search_PubMed", h1("Download your initial dataframe"), 
+
+#Search tab
+      tabItem("Search_PubMed", h1("Download Initial Dataframe"), 
               textInput("Search_Term", label="Enter search term"),
               tags$iframe(src = "https://www.ncbi.nlm.nih.gov/pubmed/advanced", 
                                                                                                                      style="width:100%;",  frameborder="0",
                                                                                                                      id="iframe",
                                                                                                                      height = "600px"),
               dataTableOutput("raw_data")),
-      tabItem("data_table", h1("key_summary()"),dataTableOutput("data")),
-      tabItem("keyword_bar_graph", h1("key_bgraph()")),
-      tabItem("keyword_trends_line_graph", h1("key_lgraph()"))
+      tabItem("data_table", h1("Keywords Data Table"),dataTableOutput("data")),
+      tabItem("keyword_bar_graph", h1("Keywords Bar Graph")),
+      tabItem("keyword_trends_line_graph", h1("Keyword Trends"))
     )
   )
 )
