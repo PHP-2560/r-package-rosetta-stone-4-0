@@ -8,7 +8,7 @@
 Given a query returns the amount of time our key_download function will take to build its data frame
 }
 \usage{
-estimate_time(query)
+key_estimate_time(query)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -43,3 +43,5 @@ estimate_time(query)
 }
 \examples{
 key_estimate_time("public health AND climate change")
+
+For visual print of the above plese see the included vignette

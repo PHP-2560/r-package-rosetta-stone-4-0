@@ -1,22 +1,22 @@
-\name{obtain_data}
-\alias{obtain_data}
+\name{key_lgraph}
+\alias{key_lgraph}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{test
+\title{key_lgraph
 %%  ~~function to do ... ~~
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+key_lgraph() allows the user to efficiently check how keyword trends changed over time by creating line graphs with facets.
 }
 \usage{
-obtain_data(query, full_search = F)
+key_lgraph(Full_table, N)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{query}{
-%%     ~~Describe \code{query} here~~
+  \item{Full_table}{
+The table produced by key_summaey
 }
-  \item{full_search}{
-%%     ~~Describe \code{full_search} here~~
+  \item{N}{
+In descending order based on frequency, the nuber of keywords you wish to see
 }
 }
 \details{
@@ -45,44 +45,9 @@ obtain_data(query, full_search = F)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+key_lgraph(climate_table, 6)
 
-## The function is currently defined as
-function (query, full_search = F)
-{
-    search <- entrez_search(db = "pubmed", term = query, use_history = T)
-    max <- ifelse(full_search, search$count, 360)
-    results <- c()
-    for (seq_start in seq(1, max, 360)) {
-        recs <- entrez_summary(db = "pubmed", term = query, retmax = 360,
-            retstart = seq_start, web_history = search$web_history)
-        results <- c(results, recs)
-    }
-    filter_esummary <- function(data) {
-        c(data$uid, data$title, data$pubdate, paste(data$authors$name,
-            collapse = ", "))
-    }
-    filtered_data <- data.frame(matrix(unlist(lapply(results,
-        filter_esummary)), byrow = T, ncol = 4), stringsAsFactors = F)
-    names(filtered_data) <- c("uid", "title", "date", "authors")
-    filtered_data$date <- as.numeric(str_remove(filtered_data$date,
-        "[A-z]+.+"))
-    get_keywords <- function(x) {
-        url <- paste("https://www.ncbi.nlm.nih.gov/pubmed/",
-            x, sep = "")
-        results <- read_html(url)
-        papers <- html_nodes(results, ".rprt")
-        keys_html <- html_nodes(papers, ".keywords")
-        keys <- html_text(keys_html) \%>\% str_remove("KEYWORDS: ") \%>\%
-            str_split("; ")
-        keys
-    }
-    keywords <- lapply(filtered_data$uid, get_keywords)
-    filtered_data$keywords <- keywords
-    filtered_data
-  }
+For visual print of the above plese see the included vignette
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
