@@ -9,12 +9,15 @@ library(rebus)
 library(pubkey)
 library(rentrez)
 
+
 ui <- dashboardPage(
+        
+  
   dashboardHeader(
     title = "PubKey"
   ),
   
-  dashboardSidebar(
+  dashboardSidebar  (
     sidebarMenu(id="sbmenu",
                 menuItem("Instructions", tabName = "Instructions", icon = icon("list")),
                 menuSubItem("Estimate Time", tabName = "Estimate_Time", icon = icon("clock")),
@@ -25,7 +28,8 @@ ui <- dashboardPage(
                 menuItem("Go to PubMed!", icon = icon("send")), href = "https://www.ncbi.nlm.nih.gov/pubmed/")
   ),
   
-  dashboardBody(
+  dashboardBody ( 
+    includeCSS("bootstrap.css"),
     tabItems(
 
 #Introduction tab
@@ -76,11 +80,13 @@ ui <- dashboardPage(
 
 
 server <- function(input, output) {
+  
+#code to embed YouTube video into Shiny (only change the src link)
   output$video <- renderUI({
-    HTML(paste0('<iframe width="560" height="315" src="https://www.youtube.com/embed/3DA-NzV1BWE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'))
+    HTML(paste0('<iframe width="560" height="315" src="https://www.youtube.com/embed/52ZlXsFJULI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'))
     })
   
-  
+#code to embed PubMed advance search page
   getPage<-function() {
     return(tags$iframe(src = "https://www.ncbi.nlm.nih.gov/pubmed/advanced", 
                        style="width:100%;",  frameborder="0",
@@ -91,9 +97,13 @@ server <- function(input, output) {
     getPage()
   })
     
+#code to get the time estimate for the Estimate Time tab
   output$time_estimate <- renderText({key_estimate_time(input$example_Search_Term)})
-  
+
+#code to get the output for the 
   output$raw_data <- renderDataTable({key_download(input$Search_Term)})
+  
+  
 }
 
 
