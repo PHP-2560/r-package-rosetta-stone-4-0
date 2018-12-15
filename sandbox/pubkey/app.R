@@ -1,5 +1,6 @@
 library(shiny)
 library(shinydashboard)
+library(DT)
 
 library(dplyr)
 library(stringr)
@@ -41,7 +42,7 @@ ui <- dashboardPage(
               p("We highly suggest that our users begin with visiting the `Estimate Time` tab. Some search queries will take longer to download the initial dataframe than others. This estimate will allow the user to make a decision to proceed with their inital query or to try to refine their search."),
               p("Once the user has finalized their query, they can begin downloading the initial dataframe in the `Search PubMed` tab. The user can include any words in the query, and even specify dates, authors or any tools available through PubMed's Advanced Search options. For convienece, included in this tab is the `Advanced Search` page from PubMed. Users can easily build their query and copy the output and paste into the specified search box."),
               p("The output from this search may be difficult to read, but we have included additional tabs for the user to easily digest and visualize their keyword dataframe."),
-              h3("Read the Results in the Data Table tab"), 
+              h3("Read the Results in a Data Table"), 
               p("Read PubMed's dataframe output easily in the `Data Table` tab. Here, the user can efficiently see which keywords were most used and see how often they were used by year. This table will automatically list the most popular keywords at the top and omit any years that no keywords were found."),
               h3("Analyze Keywords in a Bar Graph"),
               p("After getting the data table with the keywords used in the PubMed search query, it might be useful to visually see which keywords were used more often than others. The user is also able to specify the number of keywords the bar graph should include."),
@@ -64,7 +65,7 @@ ui <- dashboardPage(
               submitButton("Update Search", icon("refresh")),
               h3("Use PubMed to specify your search query"),
               p("After completing your query, copy and paste the line generated into our search box above."),
-              tags$iframe(src = "https://www.ncbi.nlm.nih.gov/pubmed/advanced", 
+              shiny::tags$iframe(src = "https://www.ncbi.nlm.nih.gov/pubmed/advanced", 
                                                                                                                      style="width:100%;",  frameborder="0",
                                                                                                                      id="iframe",
                                                                                                                      height = "600px"),
@@ -72,7 +73,15 @@ ui <- dashboardPage(
               p("Depending on how long your search query will take, your dataframe may not appear immediately. We promise our app is working!"),
               dataTableOutput("raw_data")),
       tabItem("data_table", h1("Keywords Data Table"),dataTableOutput("data")),
-      tabItem("keyword_bar_graph", h1("Keywords Bar Graph")),
+      
+#bar graph tab
+      tabItem("keyword_bar_graph", h1("Keywords Bar Graph"),
+              numericInput("numInput", "Number of Keywords Displayed:", value = 10, min = 1, max = 50),
+              DTOutput('tbl'),
+              h3("See Your Keywords Here!"),
+              plotOutput(outputId = "bargraph")),
+
+#line graph tab
       tabItem("keyword_trends_line_graph", h1("Keyword Trends"))
     )
   )
@@ -89,7 +98,7 @@ server <- function(input, output) {
   
 #code to embed PubMed advance search page
   getPage<-function() {
-    return(tags$iframe(src = "https://www.ncbi.nlm.nih.gov/pubmed/advanced", 
+    return(shiny::tags$iframe(src = "https://www.ncbi.nlm.nih.gov/pubmed/advanced", 
                        style="width:100%;",  frameborder="0",
                        id="iframe",
                        height = "600px"))
@@ -101,9 +110,13 @@ server <- function(input, output) {
 #code to get the time estimate for the Estimate Time tab
   output$time_estimate <- renderText({key_estimate_time(input$example_Search_Term)})
 
-#code to get the output for the 
+#code to get the output for the starting table
   output$raw_data <- renderDataTable({key_download(input$Search_Term)})
-  
+
+#code to get bar graph output
+  output$tbl <- renderDT(cd, options = list(lengthChange = FALSE))
+
+  output$bargraph <- renderPlot({key_bgraph(df = cd)})
   
 }
 
