@@ -27,7 +27,7 @@ ui <- dashboardPage(
                 menuItem("Data Table", tabName =  "data_table", icon = icon("calendar")),
                 menuItem("Keyword Bar Graph", tabName = "keyword_bar_graph", icon = icon("signal")),
                 menuItem("Keyword Trends Line Graph", tabName = "keyword_trends_line_graph", icon = icon("globe")),
-                menuItem("Go to PubMed!", icon = icon("send")), href = "https://www.ncbi.nlm.nih.gov/pubmed/")
+                menuItem("Go to PubMed!", icon = icon("send"), href = "https://www.ncbi.nlm.nih.gov/pubmed/"))
   ),
   
   dashboardBody ( 
@@ -126,7 +126,6 @@ server <- function(input, output) {
   output$bargraph <- renderPlot({key_bgraph(df = cd, n_values = input$numKey)})
   
 #code to get line graph output
-  #output$tbl <- renderDT(cd, options = list(lengthChange = FALSE))
   output$linegraph <- renderPlot({key_lgraph(cd, n = input$lineKey)})
 }
 
