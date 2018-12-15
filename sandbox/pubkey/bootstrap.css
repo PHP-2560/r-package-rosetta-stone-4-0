@@ -1,11 +1,11 @@
 /*change all fonts */
-* {font-family: Arial;
+* {font-family: Comic Sans MS;
   
 }
 
 /* header title font */
 .main-header .logo {
-  font-family: "Arial", serif;
+  font-family: "Comic Sans MS", sans-serif;
   font-weight: bold;
   font-size: 24px;
 }
@@ -35,8 +35,8 @@
 
 /* active sidebar menu item */
         .skin-blue .main-sidebar .sidebar .sidebar-menu .active a{
-                              background-color: white;
-                              color:black;
+                              background-color: #336699;
+                              color:white;
                               }
 
 /* sidebar menuitems */
@@ -47,8 +47,8 @@
 
 /* sidebar menuitems when mouse hover */
          .skin-blue .main-sidebar .sidebar .sidebar-menu a:hover{
-                              background-color: #A6B8D7;
-                              color:white;
+                              background-color: #ECF0F5;
+                              color: black;
                               }
                               
 /* sidebar toggle button */           

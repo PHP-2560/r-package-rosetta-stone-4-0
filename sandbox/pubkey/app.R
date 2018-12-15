@@ -14,7 +14,7 @@ ui <- dashboardPage(
         
   
   dashboardHeader(
-    title = "PubKey"
+    title = "PubKey App"
   ),
   
   dashboardSidebar  (
@@ -46,7 +46,8 @@ ui <- dashboardPage(
               h3("Analyze Keywords in a Bar Graph"),
               p("After getting the data table with the keywords used in the PubMed search query, it might be useful to visually see which keywords were used more often than others. The user is also able to specify the number of keywords the bar graph should include."),
               h3("Analyze Keyword Trends"),
-              p("The user can also quickly see how trends in keywords may have changed over time using our `Keyword Trends Line Graph` tab. The user is also able to specify the number of keywords the graphs should include.")
+              p("The user can also quickly see how trends in keywords may have changed over time using our `Keyword Trends Line Graph` tab. The user is also able to specify the number of keywords the graphs should include."), 
+              h3("Looking for something different? Continue your search on PubMed!")
               ),
       
 #Estimate time tab
