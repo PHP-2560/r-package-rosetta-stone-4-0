@@ -3,6 +3,7 @@ library(shinydashboard)
 library(DT)
 
 library(dplyr)
+library(tidyr)
 library(stringr)
 library(rvest)
 library(rebus)
@@ -76,16 +77,22 @@ ui <- dashboardPage(
       
 #bar graph tab
       tabItem("keyword_bar_graph", h1("Keywords Bar Graph"),
-              numericInput("numInput", "Number of Keywords Displayed:", value = 10, min = 1, max = 50),
+              numericInput("numKey", "Number of Keywords Displayed:", value = 5, min = 1, max = 50),
+              submitButton("Update Keywords", icon("refresh")),
               DTOutput('tbl'),
               h3("See Your Keywords Here!"),
               plotOutput(outputId = "bargraph")),
 
 #line graph tab
-      tabItem("keyword_trends_line_graph", h1("Keyword Trends"))
+      tabItem("keyword_trends_line_graph", h1("Keyword Trends"),
+              numericInput("lineKey", "Number of Keywords Displayed:", value = 6, min = 1),
+              submitButton("Update Keywords", icon("refresh")), 
+              #DTOutput('tbl'),
+              h3("See Your Keyword Trends Here!"), 
+              plotOutput(outputId = "linegraph")
     )
   )
-)
+))
 
 
 
@@ -113,11 +120,14 @@ server <- function(input, output) {
 #code to get the output for the starting table
   output$raw_data <- renderDataTable({key_download(input$Search_Term)})
 
-#code to get bar graph output
+#code to load dataframe and get bar graph output
   output$tbl <- renderDT(cd, options = list(lengthChange = FALSE))
 
-  output$bargraph <- renderPlot({key_bgraph(df = cd)})
+  output$bargraph <- renderPlot({key_bgraph(df = cd, n_values = input$numKey)})
   
+#code to get line graph output
+  #output$tbl <- renderDT(cd, options = list(lengthChange = FALSE))
+  output$linegraph <- renderPlot({key_lgraph(cd, n = input$lineKey)})
 }
 
 
