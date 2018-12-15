@@ -30,7 +30,7 @@ ui <- dashboardPage(
       tabItem("Instructions", h1("How to use PubKey")),
       tabItem("Estimate_Time", h1("Please use the below function to estimate the time it will take to complete your query"), 
               textInput("example_Search_Term", label="Enter search term"), textOutput("time_estimate")),
-      tabItem("Search_PubMed", h1("key_download()"), textInput("Search_Term", label="Enter search term"),tags$iframe(src = "https://www.ncbi.nlm.nih.gov/pubmed/advanced", 
+      tabItem("Search_PubMed", h1("key_download()"), textInput("Search_Term", label="Enter search term"),shiny::tags$iframe(src = "https://www.ncbi.nlm.nih.gov/pubmed/advanced", 
                                                                                                                      style="width:100%;",  frameborder="0",
                                                                                                                      id="iframe",
                                                                                                                      height = "600px"),
