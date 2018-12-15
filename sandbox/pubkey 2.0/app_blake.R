@@ -9,6 +9,7 @@ library(rebus)
 library(pubkey)
 library(rentrez)
 
+
 ui <- dashboardPage(
   dashboardHeader(
     title = "Shiny"
@@ -30,9 +31,14 @@ ui <- dashboardPage(
       tabItem("Instructions", h1("How to use PubKey")),
       tabItem("Estimate_Time", h1("Please use the below function to estimate the time it will take to complete your query"), 
               textInput("example_Search_Term", label="Enter search term"), textOutput("time_estimate")),
-      tabItem("Search_PubMed", h1("key_download()"), textInput("Search_Term", label="Enter search term"), htmlOutput("PubSearch"),
+      tabItem("Search_PubMed", h1("key_download()"),
+              shiny::tags$iframe(src = "https://www.ncbi.nlm.nih.gov/pubmed/advanced", 
+                                 style="width:100%;",  frameborder="0",
+                                 id="iframe",
+                                 height = "600px"),
+              textInput("Search_Term", label="Enter search term"),
               dataTableOutput("raw_data")),
-      tabItem("data_table", h1("key_summary()")),
+      tabItem("data_table", h1("key_summary()"),actionButton("do", "Click to Load Completed Query"), tableOutput("data")),
       tabItem("keyword_bar_graph", h1("key_bgraph()")),
       tabItem("keyword_trends_line_graph", h1("key_lgraph()"))
     )
@@ -41,19 +47,18 @@ ui <- dashboardPage(
 
 
 server <- function(input, output) {
-  getPage<-function() {
-    return(tags$iframe(src = "https://www.ncbi.nlm.nih.gov/pubmed/advanced", 
-                       style="width:100%;",  frameborder="0",
-                       id="iframe",
-                       height = "600px"))
+ 
+  pubmed_initial <- function(x){
+    search <- key_download(x)
+    saveRDS(search, file="temp_data.Rda")
+    search
   }
-  output$PubSearch <-renderUI({
-    getPage()
-  })
-  
   output$time_estimate <- renderText({key_estimate_time(input$example_Search_Term)})
   
-  output$raw_data <- renderDataTable({key_download(input$Search_Term)})
+  output$raw_data <- renderDataTable({pubmed_initial(input$Search_Term)})
+  
+  df <- eventReactive(input$do, {head(cars)})
+  output$data <- renderTable({df()})
 }
 
 shinyApp(ui,server)
