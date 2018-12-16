@@ -5,6 +5,8 @@ library(dplyr)
 library(stringr)
 library(rvest)
 library(rebus)
+library(ggplot2)
+library(tidyverse)
 
 library(pubkey)
 library(rentrez)
@@ -37,10 +39,12 @@ ui <- dashboardPage(
                                  id="iframe",
                                  height = "600px"),
               textInput("Search_Term", label="Enter search term"),
+              "Click to populate the other tabs with the results of your search",
+              actionButton("do", "Create Summaries"),
               dataTableOutput("raw_data")),
-      tabItem("data_table", h1("key_summary()"),actionButton("do", "Click to Load Completed Query"), tableOutput("data")),
-      tabItem("keyword_bar_graph", h1("key_bgraph()")),
-      tabItem("keyword_trends_line_graph", h1("key_lgraph()"))
+      tabItem("data_table", h1("key_summary()"), tableOutput("data")),
+      tabItem("keyword_bar_graph", h1("key_bgraph()"), plotOutput("bgraph")),
+      tabItem("keyword_trends_line_graph", h1("key_lgraph()"), plotOutput("lgraph"))
     )
   )
 )
@@ -59,8 +63,11 @@ server <- function(input, output) {
   
   output$raw_data <- renderDataTable({pubmed_initial(input$Search_Term)})
   
-  df <- eventReactive(input$do, {as.data.frame(readRDS("pubmed_results/temp_data.Rda"))})
-  output$data <- renderTable({key_summary(df())})
+  df <- eventReactive(input$do, {key_summary(as.data.frame(readRDS("pubmed_results/temp_data.Rda")))})
+  
+  output$data <- renderTable({df()})
+  output$bgraph <- renderPlot({key_bgraph(df())})
+  output$lgraph <- renderPlot({key_lgraph(df())})
 }
 
 shinyApp(ui,server)
