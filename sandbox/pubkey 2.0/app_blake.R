@@ -1,16 +1,16 @@
-library(shiny)
-library(shinydashboard)
+names<-c("dplyr","tidyr","rentrez","stringr","rvest","ggplot2","rebus","tidyverse","rentrez","shinydashboard","shiny")
 
-library(dplyr)
-library(stringr)
-library(rvest)
-library(rebus)
-library(ggplot2)
-library(tidyverse)
+
+for(name in names){
+  if (!(name %in% installed.packages())){
+    # install.packages(name, repos="http://cran.us.r-project.org",quiet=TRUE,dependencies=TRUE) #if package not installed, install the package
+    print("here")
+    install.packages(name, repos="http://cran.us.r-project.org",quiet=TRUE,dependencies=FALSE)} #if package not installed, install the package
+  library(name, character.only=TRUE,warn.conflicts=FALSE,quietly=TRUE)
+  
+}
 
 library(pubkey)
-library(rentrez)
-
 
 ui <- dashboardPage(
   dashboardHeader(
