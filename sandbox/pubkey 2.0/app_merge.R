@@ -142,7 +142,7 @@ server <- function(input, output) {
   df <- eventReactive(input$do, {key_summary(as.data.frame(readRDS("pubmed_results/temp_data.Rda")))})
   
   #Make Keyword table
-  #output$data <- renderTable({df()})
+  output$data <- renderTable({df()})
   
   #code to load dataframe and get bar graph output
   output$tbl <- renderDT(df(), options = list(lengthChange = FALSE))
