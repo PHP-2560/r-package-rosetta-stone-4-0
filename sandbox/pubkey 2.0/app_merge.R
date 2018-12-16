@@ -47,7 +47,7 @@ ui <- dashboardPage(
       h3("Looking for something different? Continue your search on PubMed!")
     ),
     
-    #Estimate time tab
+#Estimate time tab
     tabItem("Estimate_Time", h1("Estimate Download Time"), 
             br(),
             textInput("example_Search_Term", label="Enter search term"), 
@@ -55,18 +55,23 @@ ui <- dashboardPage(
             helpText("When you click the button above, you should see the estimated time it will take to download your current search query."),
             textOutput("time_estimate")),
     
-    
-    
-    
-      tabItem("Search_PubMed", h1("key_download()"),
+#Search tab
+      tabItem("Search_PubMed", h1("Download Initial Dataframe"),
+              
+              
+              textInput("Search_Term", label="Enter search term"),
+              submitButton("Update Search", icon("refresh")),
+              h3("Use PubMed to specify your search query"),
+              p("After completing your query, copy and paste the line generated into our search box above."),
               shiny::tags$iframe(src = "https://www.ncbi.nlm.nih.gov/pubmed/advanced", 
                                  style="width:100%;",  frameborder="0",
                                  id="iframe",
                                  height = "600px"),
-              textInput("Search_Term", label="Enter search term"),
-              "Click to populate the other tabs with the results of your search",
+              
+              "Click to populate the other tabs with the results of your search:",
               actionButton("do", "Create Summaries"),
               dataTableOutput("raw_data")),
+
       tabItem("data_table", h1("key_summary()"), tableOutput("data")),
       tabItem("keyword_bar_graph", h1("key_bgraph()"), plotOutput("bgraph")),
       tabItem("keyword_trends_line_graph", h1("key_lgraph()"), plotOutput("lgraph"))
@@ -76,6 +81,8 @@ ui <- dashboardPage(
 
 
 server <- function(input, output) {
+  
+  #Code to save and transfer data
   if(!dir.exists("pubmed_results")){
     dir.create("pubmed_results")
   }
@@ -84,10 +91,30 @@ server <- function(input, output) {
     saveRDS(search, file="pubmed_results/temp_data.Rda")
     search
   }
+  
+  #code to embed YouTube video into Shiny (only change the src link)
+  output$video <- renderUI({
+    HTML(paste0('<iframe width="560" height="315" src="https://www.youtube.com/embed/52ZlXsFJULI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'))
+  })
+  
+  #code to embed PubMed advance search page
+  getPage<-function() {
+    return(shiny::tags$iframe(src = "https://www.ncbi.nlm.nih.gov/pubmed/advanced", 
+                              style="width:100%;",  frameborder="0",
+                              id="iframe",
+                              height = "600px"))
+  }
+  output$PubSearch <-renderUI({
+    getPage()
+  })
+  
+  #code to get the time estimate for the Estimate Time tab  
   output$time_estimate <- renderText({key_estimate_time(input$example_Search_Term)})
   
+  #code to get the output for the starting table
   output$raw_data <- renderDataTable({pubmed_initial(input$Search_Term)})
   
+  #Code to create working data frame
   df <- eventReactive(input$do, {key_summary(as.data.frame(readRDS("pubmed_results/temp_data.Rda")))})
   
   output$data <- renderTable({df()})
