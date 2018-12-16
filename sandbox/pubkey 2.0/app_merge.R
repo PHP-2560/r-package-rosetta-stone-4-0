@@ -13,6 +13,7 @@ for(name in names){
 library(pubkey)
 
 ui <- dashboardPage(
+  skin = "yellow",
   dashboardHeader(
     title = "PubKey App"
   ),
@@ -25,9 +26,8 @@ ui <- dashboardPage(
                 menuItem("Data Table", tabName =  "data_table", icon = icon("calendar")),
                 menuItem("Keyword Bar Graph", tabName = "keyword_bar_graph", icon = icon("signal")),
                 menuItem("Keyword Trends Line Graph", tabName = "keyword_trends_line_graph", icon = icon("globe")),
-                menuItem("Go to PubMed!", icon = icon("send")), 
-                onclick ="window.open('https://www.ncbi.nlm.nih.gov/pubmed/', '_blank')"
-                )
+                menuItem("Go to PubMed!", icon = icon("send"), 
+                         href ="https://www.ncbi.nlm.nih.gov/pubmed/"))
   ),
   
   dashboardBody(
