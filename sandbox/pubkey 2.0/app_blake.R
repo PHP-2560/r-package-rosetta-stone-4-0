@@ -47,18 +47,20 @@ ui <- dashboardPage(
 
 
 server <- function(input, output) {
- 
+  if(!dir.exists("pubmed_results")){
+    dir.create("pubmed_results")
+  }
   pubmed_initial <- function(x){
     search <- key_download(x)
-    saveRDS(search, file="temp_data.Rda")
+    saveRDS(search, file="pubmed_results/temp_data.Rda")
     search
   }
   output$time_estimate <- renderText({key_estimate_time(input$example_Search_Term)})
   
   output$raw_data <- renderDataTable({pubmed_initial(input$Search_Term)})
   
-  df <- eventReactive(input$do, {head(cars)})
-  output$data <- renderTable({df()})
+  df <- eventReactive(input$do, {as.data.frame(readRDS("pubmed_results/temp_data.Rda"))})
+  output$data <- renderTable({key_summary(df())})
 }
 
 shinyApp(ui,server)
