@@ -48,8 +48,16 @@ ui <- dashboardPage(
     ),
     
     #Estimate time tab
-      tabItem("Estimate_Time", h1("Please use the below function to estimate the time it will take to complete your query"), 
-              textInput("example_Search_Term", label="Enter search term"), textOutput("time_estimate")),
+    tabItem("Estimate_Time", h1("Estimate Download Time"), 
+            br(),
+            textInput("example_Search_Term", label="Enter search term"), 
+            submitButton("Update Search", icon("refresh")),
+            helpText("When you click the button above, you should see the estimated time it will take to download your current search query."),
+            textOutput("time_estimate")),
+    
+    
+    
+    
       tabItem("Search_PubMed", h1("key_download()"),
               shiny::tags$iframe(src = "https://www.ncbi.nlm.nih.gov/pubmed/advanced", 
                                  style="width:100%;",  frameborder="0",
