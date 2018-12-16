@@ -141,9 +141,11 @@ server <- function(input, output) {
   #Code to create working data frame
   df <- eventReactive(input$do, {key_summary(as.data.frame(readRDS("pubmed_results/temp_data.Rda")))})
   
-  output$tbl <- renderDT(df(), options = list(lengthChange = FALSE))
+  #Make Keyword table
+  output$data <- renderTable({df()})
   
   #code to load dataframe and get bar graph output
+  output$tbl <- renderDT(df(), options = list(lengthChange = FALSE))
   output$bargraph <- renderPlot({key_bgraph(df(), n_values = input$numKey)})
   
   #code to get line graph output  
