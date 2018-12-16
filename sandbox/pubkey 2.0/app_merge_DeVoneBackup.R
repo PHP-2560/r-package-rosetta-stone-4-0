@@ -126,12 +126,7 @@ server <- function(input, output) {
   })
   
   #code to get the time estimate for the Estimate Time tab  
-  output$time_estimate <- renderText({
-    if (input$example_Search_Term =="") {
-      return (NULL)
-    }
-    key_estimate_time(input$example_Search_Term)})
-  
+  output$time_estimate <- renderText({key_estimate_time(input$example_Search_Term)})
   
   #code to get the output for the starting table
   output$raw_data <- renderDataTable({pubmed_initial(input$Search_Term)})
