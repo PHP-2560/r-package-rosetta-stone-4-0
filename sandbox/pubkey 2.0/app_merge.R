@@ -70,9 +70,12 @@ ui <- dashboardPage(
               
               "Click to populate the other tabs with the results of your search:",
               actionButton("do", "Create Summaries"),
+              h3("View Your Inital Dataframe Here!"),
+              p("Depending on how long your search query will take, your dataframe may not appear immediately. We promise our app is working!"),
               dataTableOutput("raw_data")),
 
-      tabItem("data_table", h1("key_summary()"), tableOutput("data")),
+#Data Table
+tabItem("data_table", h1("key_summary()"), tableOutput("data")),
 
 #bar graph tab
 tabItem("keyword_bar_graph", h1("Keywords Bar Graph"),
@@ -131,14 +134,13 @@ server <- function(input, output) {
   #Code to create working data frame
   df <- eventReactive(input$do, {key_summary(as.data.frame(readRDS("pubmed_results/temp_data.Rda")))})
   
-  output$data <- renderTable({df()})
+  output$tbl <- renderDT(df(), options = list(lengthChange = FALSE))
   
   #code to load dataframe and get bar graph output
-  output$tbl <- renderDT(df(), options = list(lengthChange = FALSE))
-  output$bgraph <- renderPlot({key_bgraph(df(), n_values = input$numKey)})
+  output$bargraph <- renderPlot({key_bgraph(df(), n_values = input$numKey)})
   
   #code to get line graph output  
-  output$lgraph <- renderPlot({key_lgraph(df(), n = input$lineKey)})
+  output$linegraph <- renderPlot({key_lgraph(df(), n = input$lineKey)})
 }
 
 shinyApp(ui,server)
