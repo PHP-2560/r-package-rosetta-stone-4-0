@@ -73,11 +73,25 @@ ui <- dashboardPage(
               dataTableOutput("raw_data")),
 
       tabItem("data_table", h1("key_summary()"), tableOutput("data")),
-      tabItem("keyword_bar_graph", h1("key_bgraph()"), plotOutput("bgraph")),
-      tabItem("keyword_trends_line_graph", h1("key_lgraph()"), plotOutput("lgraph"))
+
+#bar graph tab
+tabItem("keyword_bar_graph", h1("Keywords Bar Graph"),
+        numericInput("numKey", "Number of Keywords Displayed:", value = 5, min = 1, max = 50),
+        submitButton("Update Keywords", icon("refresh")),
+        DTOutput('tbl'),
+        h3("See Your Keywords Here!"),
+        plotOutput(outputId = "bargraph")),
+
+#line graph tab
+tabItem("keyword_trends_line_graph", h1("Keyword Trends"),
+        numericInput("lineKey", "Number of Keywords Displayed:", value = 6, min = 1),
+        submitButton("Update Keywords", icon("refresh")), 
+        #DTOutput('tbl'),
+        h3("See Your Keyword Trends Here!"), 
+        plotOutput(outputId = "linegraph")
     )
   )
-)
+))
 
 
 server <- function(input, output) {
@@ -118,8 +132,13 @@ server <- function(input, output) {
   df <- eventReactive(input$do, {key_summary(as.data.frame(readRDS("pubmed_results/temp_data.Rda")))})
   
   output$data <- renderTable({df()})
-  output$bgraph <- renderPlot({key_bgraph(df())})
-  output$lgraph <- renderPlot({key_lgraph(df())})
+  
+  #code to load dataframe and get bar graph output
+  output$tbl <- renderDT(df(), options = list(lengthChange = FALSE))
+  output$bgraph <- renderPlot({key_bgraph(df(), n_values = input$numKey)})
+  
+  #code to get line graph output  
+  output$lgraph <- renderPlot({key_lgraph(df(), n = input$lineKey)})
 }
 
 shinyApp(ui,server)
