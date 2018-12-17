@@ -148,7 +148,7 @@ server <- function(input, output) {
   
   #Make Keyword table
   #output$data <- renderTable({df()})
-  output$data <- renderDT(df(), options = list(lengthChange = FALSE), width = "50%") 
+  output$data <- renderDT(df(), options = list(lengthChange = FALSE,scrollX=TRUE), width = "50%") 
   
   #code to load dataframe and get bar graph output
   #output$tbl <- renderDT(df(), options = list(lengthChange = FALSE))
