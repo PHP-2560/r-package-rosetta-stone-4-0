@@ -42,7 +42,7 @@ ui <- dashboardPage(
       p("Once the user has finalized their query, they can begin downloading the initial dataframe in the `Search PubMed` tab. The user can include any words in the query, and even specify dates, authors or any tools available through PubMed's Advanced Search options. For convienece, included in this tab is the `Advanced Search` page from PubMed. Users can easily build their query and copy the output and paste into the specified search box."),
       p("The output from this search may be difficult to read, but we have included additional tabs for the user to easily digest and visualize their keyword dataframe."),
       h3("Read the Results in a Data Table"), 
-      p("Read PubMed's dataframe output easily in the `Data Table` tab. Here, the user can efficiently see which keywords were most used and see how often they were used by year. This table will automatically list the most popular keywords at the top and omit any years that no keywords were found."),
+      p("Read PubMed's dataframe output easily in the `Data Table` tab. Here, the user can efficiently see which keywords were most used and see how often they were used by year. This table will automatically list the most popular keywords at the top and will only start the year where the first keyword was detected."),
       h3("Analyze Keywords in a Bar Graph"),
       p("After getting the data table with the keywords used in the PubMed search query, it might be useful to visually see which keywords were used more often than others. The user is also able to specify the number of keywords the bar graph should include."),
       h3("Analyze Keyword Trends"),
@@ -73,7 +73,7 @@ ui <- dashboardPage(
               
               br(),
               h3("Click Here to Create Your Summary Table:"),
-              actionButton("do", "Create Summary Table", style = "color: #fff; background-color: #2E86C1; border-color: #2E86C1"),
+              actionButton("do", "Create Summary Table", icon("cloud-download"), style = "color: #fff; background-color: #2E86C1; border-color: #2E86C1"),
               h3("View Your Inital Dataframe Here!"),
               p("Depending on how long your search query will take, your dataframe may not appear immediately. We promise our app is working!"),
               dataTableOutput("raw_data")),
@@ -118,7 +118,7 @@ server <- function(input, output) {
   
   #code to embed YouTube video into Shiny (only change the src link)
   output$video <- renderUI({
-    HTML(paste0('<iframe width="560" height="315" src="https://www.youtube.com/embed/52ZlXsFJULI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'))
+    HTML(paste0('<iframe width="560" height="315" src="https://www.youtube.com/embed/jbAar8Ca5tg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'))
   })
   
   #code to embed PubMed advance search page
