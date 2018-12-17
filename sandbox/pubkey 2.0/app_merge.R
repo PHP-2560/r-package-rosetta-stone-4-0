@@ -73,7 +73,7 @@ ui <- dashboardPage(
               
               br(),
               h3("Click Here to Create Your Summary Table:"),
-              actionButton("do", "Create Summary Table"),
+              actionButton("do", "Create Summary Table", style = "color: #fff; background-color: #2E86C1; border-color: #2E86C1"),
               h3("View Your Inital Dataframe Here!"),
               p("Depending on how long your search query will take, your dataframe may not appear immediately. We promise our app is working!"),
               dataTableOutput("raw_data")),
