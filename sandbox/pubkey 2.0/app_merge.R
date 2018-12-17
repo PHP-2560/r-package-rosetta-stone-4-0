@@ -141,7 +141,11 @@ server <- function(input, output) {
   
   
   #code to get the output for the starting table
-  output$raw_data <- renderDataTable({pubmed_initial(input$Search_Term)})
+  output$raw_data <- renderDataTable({
+    if (input$Search_Term =="") {
+      return (NULL)
+    }
+    pubmed_initial(input$Search_Term)})
   
   #Code to create working data frame
   df <- eventReactive(input$do, {key_summary(as.data.frame(readRDS("pubmed_results/temp_data.Rda")))})
