@@ -1,0 +1,57 @@
+/*change all fonts */
+* {font-family: Comic Sans MS;
+  
+}
+
+/* header title font */
+.main-header .logo {
+  font-family: "Comic Sans MS", sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+
+/* background color of header (logo part) */
+.skin-blue .main-header .logo {
+          background-color: black;
+        }
+        
+        
+/* change the background color of header (logo part) when mouse hover */
+.skin-blue .main-header .logo:hover {
+          background-color: #336699;
+        }
+        
+
+/* background color for remaining part of the header */
+.skin-blue .main-header .navbar {
+                              background-color: #336699;
+                              } 
+                              
+/* main sidebar */
+        .skin-blue .main-sidebar {
+                              background-color: #336699;
+                              }
+
+/* active sidebar menu item */
+        .skin-blue .main-sidebar .sidebar .sidebar-menu .active a{
+                              background-color: #336699;
+                              color:white;
+                              }
+
+/* sidebar menuitems */
+        .skin-blue .main-sidebar .sidebar .sidebar-menu a{
+                              background-color: black;
+                              color: white;
+                              }
+
+/* sidebar menuitems when mouse hover */
+         .skin-blue .main-sidebar .sidebar .sidebar-menu a:hover{
+                              background-color: #ECF0F5;
+                              color: black;
+                              }
+                              
+/* sidebar toggle button */           
+.skin-blue .main-header .navbar .sidebar-toggle:hover{
+                              background-color: black;
+                              }
