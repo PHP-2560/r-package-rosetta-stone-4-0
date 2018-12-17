@@ -1,11 +1,11 @@
 /*change all fonts */
-* {font-family: Comic Sans MS;
+* {font-family: Arial;
   
 }
 
 /* header title font */
 .main-header .logo {
-  font-family: "Comic Sans MS", sans-serif;
+  font-family: "Arial", sans-serif;
   font-weight: bold;
   font-size: 24px;
 }
