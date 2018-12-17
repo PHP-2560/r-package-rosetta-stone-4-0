@@ -13,7 +13,7 @@ for(name in names){
 library(pubkey)
 
 ui <- dashboardPage(
-  skin = "yellow",
+  #skin = "yellow",
   dashboardHeader(
     title = "PubKey App"
   ),
@@ -23,7 +23,7 @@ ui <- dashboardPage(
                 menuItem("Instructions", tabName = "Instructions", icon = icon("list")),
                 menuSubItem("Estimate Time", tabName = "Estimate_Time", icon = icon("clock")),
                 menuItem("Search PubMed", tabName = "Search_PubMed", icon = icon("search")),
-                menuItem("Data Table", tabName =  "data_table", icon = icon("calendar")),
+                menuItem("Data Table", tabName =  "data_table", icon = icon("floppy-o")),
                 menuItem("Keyword Bar Graph", tabName = "keyword_bar_graph", icon = icon("signal")),
                 menuItem("Keyword Trends Line Graph", tabName = "keyword_trends_line_graph", icon = icon("globe")),
                 menuItem("Go to PubMed!", icon = icon("send"), 
@@ -31,6 +31,7 @@ ui <- dashboardPage(
   ),
   
   dashboardBody(
+     includeCSS("theme.css"),
     tabItems(
       tabItem("Instructions", h1("How To Use PubKey"),
       uiOutput("video"),
@@ -70,20 +71,24 @@ ui <- dashboardPage(
                                  id="iframe",
                                  height = "600px"),
               
-              "Click to populate the other tabs with the results of your search:",
-              actionButton("do", "Create Summaries"),
+              br(),
+              h3("Click Here to Create Your Summary Table:"),
+              actionButton("do", "Create Summary Table"),
               h3("View Your Inital Dataframe Here!"),
               p("Depending on how long your search query will take, your dataframe may not appear immediately. We promise our app is working!"),
               dataTableOutput("raw_data")),
 
 #Data Table
-tabItem("data_table", h1("key_summary()"), tableOutput("data")),
+tabItem("data_table", h1("View Summary Table"), 
+        submitButton("Create Table", icon("thumbs-up")),
+        #tableOutput
+        DTOutput('data')),
 
 #bar graph tab
 tabItem("keyword_bar_graph", h1("Keywords Bar Graph"),
         numericInput("numKey", "Number of Keywords Displayed:", value = 5, min = 1, max = 50),
         submitButton("Update Keywords", icon("refresh")),
-        DTOutput('tbl'),
+        #DTOutput('tbl'),
         h3("See Your Keywords Here!"),
         plotOutput(outputId = "bargraph")),
 
@@ -142,10 +147,11 @@ server <- function(input, output) {
   df <- eventReactive(input$do, {key_summary(as.data.frame(readRDS("pubmed_results/temp_data.Rda")))})
   
   #Make Keyword table
-  output$data <- renderTable({df()})
+  #output$data <- renderTable({df()})
+  output$data <- renderDT(df(), options = list(lengthChange = FALSE), width = "50%") 
   
   #code to load dataframe and get bar graph output
-  output$tbl <- renderDT(df(), options = list(lengthChange = FALSE))
+  #output$tbl <- renderDT(df(), options = list(lengthChange = FALSE))
   output$bargraph <- renderPlot({key_bgraph(df(), n_values = input$numKey)})
   
   #code to get line graph output  
