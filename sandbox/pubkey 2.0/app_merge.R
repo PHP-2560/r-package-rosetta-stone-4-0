@@ -118,7 +118,7 @@ server <- function(input, output) {
   
   #code to embed YouTube video into Shiny (only change the src link)
   output$video <- renderUI({
-    HTML(paste0('<iframe width="560" height="315" src="https://www.youtube.com/embed/jbAar8Ca5tg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'))
+    HTML(paste0('<iframe width="560" height="315" src="https://www.youtube.com/embed/YCgLaPoTyzs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'))
   })
   
   #code to embed PubMed advance search page
